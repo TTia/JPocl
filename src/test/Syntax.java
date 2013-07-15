@@ -3,8 +3,6 @@ package test;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import junit.framework.Assert;
-
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
