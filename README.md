@@ -308,12 +308,12 @@ Per il calcolo del valore massimo di stack, è stato individuato un algoritmo ch
 di applicazione, ottenendo valori leggermente eccessivi in alcuni casi particolari.
 
 ###Esecuzione
-JPocl � eseguibile sia in Windows che in Linux; data la necessit�à  dieseguire il comando "java" � per� richiesto
+JPocl è eseguibile sia in Windows che in Linux; data la necessità di eseguire il comando "java" è però richiesto
 di specificare il proprio ambiente di esecuzione.
 
 	JPocl usage: jpocl.jar -i InputFile [-o OutputDirectory] [-os {W,L}]
 	Default output directory is ./output
 	Default operative system is Linux(L)
 	
-L'eseguibile � situato all'interno della cartella Resources.
+L'eseguibile è situato all'interno della cartella Resources.
 
