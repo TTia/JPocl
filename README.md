@@ -169,9 +169,9 @@ Il processo di compilazione si compie nelle seguenti fasi:
 - i file ".class" prodotti da Jasmin vengono eseguiti.
 
 Di seguito sono esposti i pattern di generazione di JPocl:
-- le classi prodotte dal generatore apparterranno ad il package *"jpocl"*;
+- le classi prodotte dal generatore apparterranno al package *"jpocl"*;
 - le dichiarazioni di tipi strutturati generano una classe *jpocl.ID*, con visibilità "public" se top-level, "default" altrimenti;
-- per ogni campo di struct è generato un attributo nella classe di appartenza;
+- per ogni campo di struct è generato un attributo nella classe di appartenza, con visibilità pari a quella della classe;
 - per ogni classe sono definiti un costruttore, con i relativi parametri, ed i metodi *"equals(Object)"* e *"toString"*;
 - viene creata una classe "*jpocl.Api*" contenente i metodi *"main"*, *"runScript"* e le altre funzioni incluse nel linguaggio;
 - le espressioni presenti nel codice sorgente, ad eccezione delle dichiarazioni di tipi o funzioni, sono adeguatamente tradotte all'interno del metodo *"jpocl/Api.runScript"*.
