@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -98,9 +99,10 @@ public class Core {
 			InterruptedException {
 		JPoclGenerator genWalker = new JPoclGenerator(nodes);
 
-		FileReader groupFileR = new FileReader("JPoclGenerator.stg");
-		StringTemplateGroup templates = new StringTemplateGroup(groupFileR);
-		groupFileR.close();
+		InputStream stg = getClass().getResourceAsStream("JPoclGenerator.stg");
+		BufferedReader input = new BufferedReader(new InputStreamReader(stg));
+		StringTemplateGroup templates = new StringTemplateGroup(input);
+		input.close();
 		genWalker.setTemplateLib(templates);
 		JPoclGenerator.calc_return r3 = genWalker.calc(defaultPackage, api, dataTypes);
 
