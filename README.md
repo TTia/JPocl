@@ -165,7 +165,7 @@ Il processo di compilazione si compie nelle seguenti fasi:
 - il parser *JPoclASTParser* ottiene la sequenza di token e produce un AST di tipo *TypeTree*;
 - il type-checker *JPoclTypedAST* inferisce i tipi dei nodi ed effettua i controlli statici;
 - il generatore *JPoclGenerator* genera codice *Jasmin*, sfruttando lo String Template Group *JPoclGenerator.stg*;
-- l'output cos� prodotto viene suddiviso in diversi file ".j" e assemblato sfruttando la libreria *"jasmin.jar"*;
+- l'output così prodotto viene suddiviso in diversi file ".j" e assemblato sfruttando la libreria *"jasmin.jar"*;
 - i file ".class" prodotti da Jasmin vengono eseguiti.
 
 Di seguito sono esposti i pattern di generazione di JPocl:
@@ -304,7 +304,7 @@ mantenere l'associazione (variabile, #num).
 La definizione di due scope, unita alla possibilità di effettuare accessi dinamici da qualsiasi produzione della
 tree-grammar, ha semplificato l'applicazione degli algoritmi.
 
-Per il calcolo del valore massimo di stack, è stato individuato un algoritmo che bilanciasse precisione e semplicit�
+Per il calcolo del valore massimo di stack, è stato individuato un algoritmo che bilanciasse precisione e semplicità
 di applicazione, ottenendo valori leggermente eccessivi in alcuni casi particolari.
 
 ###Esecuzione
