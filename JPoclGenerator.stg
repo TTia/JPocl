@@ -1,0 +1,393 @@
+group TransExtCalculator;
+
+calc(stackLimit, localsLimit, stmts, structDecls, functionDecls, packageDst) ::= <<
+.class public <packageDst>/Api
+.super java/lang/Object
+
+.method public static main([Ljava/lang/String;)V
+  .limit stack 0
+  .limit locals 1
+  
+  invokestatic <packageDst>/Api.runScript()V  
+ 	return
+
+.end method
+
+.method public static runScript()V
+  .limit stack <stackLimit>
+  .limit locals <localsLimit>
+
+	<stmts;separator="\n">
+	return
+.end method
+
+<functionDecls>
+<api(packageDst)>
+<structDecls>
+>>
+
+echo(expression,type) ::= <<
+getstatic java/lang/System/out Ljava/io/PrintStream;
+<expression>
+invokevirtual java/io/PrintStream.println(<type>)V
+<newLine()>
+>>
+
+echoObject(expression,type) ::= <<
+getstatic java/lang/System/out Ljava/io/PrintStream;
+<expression>
+invokevirtual <type>.toString()Ljava/lang/String;
+invokevirtual java/io/PrintStream.println(Ljava/lang/Object;)V
+<newLine()>
+>>
+
+assignToObject(expr, variable, type) ::= <<
+<expr>
+<variable>
+<newLine()>
+>>
+
+assign(expr, variable) ::= <<
+<expr>
+<variable>
+<newLine()>
+>>
+
+if(bexpr, tokenNum, stmts) ::= <<
+<bexpr>
+ifeq L1_<tokenNum>
+L2_<tokenNum>:
+<stmts>
+L1_<tokenNum>:
+<newLine()>
+>>
+
+while(bexpr, tokenNum, stmts) ::= <<
+goto L1_<tokenNum>
+L2_<tokenNum>:
+<stmts>
+L1_<tokenNum>:
+<bexpr>
+ifne L2_<tokenNum>
+L3_<tokenNum>:
+<newLine()>
+>>
+
+block(stmts) ::= <<
+<stmts>
+>>
+
+
+
+functionDecl(visibility, returnType, id, parameters, stmts, stackLimit, localsLimit) ::= <<
+.method <visibility> static <id>(<parameters>)<returnType>
+  .limit stack <stackLimit>
+  .limit locals <localsLimit>
+
+	<stmts>
+.end method
+>>
+
+
+functionDeclVoid(visibility, returnType, id, parameters, stmts, stackLimit, localsLimit) ::= <<
+.method <visibility> static <id>(<parameters>)<returnType>
+  .limit stack <stackLimit>
+  .limit locals <localsLimit>
+
+	<stmts>
+	return
+.end method
+>>
+
+structDecl(id, visibility,	packageDst, constructor, member, toStringMethod, equalsMethod) ::= <<
+##<id>##
+.class  <visibility> <packageDst>/<id>
+	.super  java/lang/Object
+	
+	<member;separator="\n">
+	
+	<constructor>
+	
+	<toStringMethod>
+	
+	<equalsMethod>
+>>
+
+structMember(type, id, visibility) ::= <<
+.field <visibility> <id> <type>
+>>
+
+returnStat(stat, expr)::= <<
+<expr>
+<stat>
+
+>>
+
+oneTimeAccess(function, structValue, type, qid) ::= <<
+<function>
+<structValue>
+<qid>
+>>
+
+functionCall(package, fid, signature, returnType, expr) ::= <<
+<expr;separator="\n">
+invokestatic <package>/Api.<fid>(<signature>)<returnType>
+>>
+
+functionCallAndPop(package, fid, signature, returnType, expr) ::= <<
+<expr;separator="\n">
+invokestatic <package>/Api.<fid>(<signature>)<returnType>
+pop
+>>
+
+type(type) ::= <<
+<type>
+>>
+
+parametersDecl(parameters) ::= <<
+<parameters>
+>>
+
+parameter(parameter) ::= <<
+<parameter>
+>>
+
+equalsStruct(leftExpr, rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+invokevirtual java/lang/Object.equals(Ljava/lang/Object;)Z
+>>
+
+equals(leftExpr, rightExpr, tokenNum) ::= <<
+<leftExpr>
+<rightExpr>
+if_icmpne L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+pow(leftExpr, rightExpr) ::= <<
+<leftExpr>
+i2d
+<rightExpr>
+i2d
+invokestatic java/lang/Math.pow(DD)D
+d2i
+>>
+
+add(leftExpr,rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+iadd
+>>
+
+sub(leftExpr,rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+isub
+>>
+
+remainder(leftExpr,rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+irem
+>>
+
+mul(leftExpr,rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+imul
+>>
+
+div(leftExpr,rightExpr) ::= <<
+<leftExpr>
+<rightExpr>
+idiv
+>>
+
+fact(expr,packageDst) ::= <<
+<expr>
+invokestatic <packageDst>/Api.fact(I)I
+>>
+
+not(expr,tokenNum) ::= <<
+<expr>
+ifeq L1_<tokenNum>
+iconst_0
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_1
+L2_<tokenNum>:
+>>
+
+unaryPlus(expr) ::= <<
+<expr>
+>>
+
+unaryMinus(expr) ::= <<
+<expr>
+ineg
+>>
+
+less(leftExpr,rightExpr, tokenNum) ::= <<
+<leftExpr>
+<rightExpr>
+if_icmpge L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+lessEqual(leftExpr,rightExpr, tokenNum) ::= <<
+<leftExpr>
+<rightExpr>
+if_icmpgt L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+greater(leftExpr,rightExpr, tokenNum) ::= <<
+<leftExpr>
+<rightExpr>
+if_icmple L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+greaterEqual(leftExpr,rightExpr, tokenNum) ::= <<
+<leftExpr>
+<rightExpr>
+if_icmplt L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+and(leftExpr,rightExpr,tokenNum) ::= <<
+<leftExpr>
+ifeq L1_<tokenNum>
+<rightExpr>
+ifeq L1_<tokenNum>
+iconst_1
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_0
+L2_<tokenNum>:
+>>
+
+or(leftExpr,rightExpr,tokenNum) ::= <<
+<leftExpr>
+ifne L1_<tokenNum>
+<rightExpr>
+ifne L1_<tokenNum>
+iconst_0
+goto L2_<tokenNum>
+L1_<tokenNum>:
+iconst_1
+L2_<tokenNum>:
+>>
+
+store(store, localNum) ::= <<
+<store> <localNum>
+>>
+
+load(load, localNum) ::= <<
+<load> <localNum>
+>>
+
+id(localNum, loader) ::= <<
+<loader> <localNum>
+>>
+
+qualifiedIDAndLoad(qualifiedID, localNum) ::= <<
+aload <localNum>
+<qualifiedID>
+>>
+
+qualifiedID(id, qualifiedID) ::= <<
+<id>
+<qualifiedID>
+>>
+
+getField(field, struct, type) ::= <<
+getfield <struct>.<field> <type>
+>>
+
+putField(field, struct, type) ::= <<
+swap
+putfield <struct>.<field> <type>
+>>
+
+structValue(id, packageDst, constructorSignature, expr) ::= <<
+new <packageDst>/<id>
+dup
+<expr;separator="\n">
+invokespecial <packageDst>/<id>.\<init\>(<constructorSignature>)V
+>>
+
+constant(value) ::= <<
+ldc <value>
+>>
+
+newLine() ::= <<
+<\n>
+>>
+
+api(packageDst) ::= <<
+.method public static min(II)I
+	.limit stack 2
+  .limit locals 2
+  
+  iload 0
+  iload 1
+  invokestatic java/lang/Math.min(II)I
+  ireturn
+.end method
+
+.method public static max(II)I
+	.limit stack 2
+  .limit locals 2
+  
+  iload 0
+  iload 1
+  invokestatic java/lang/Math.max(II)I
+  ireturn
+.end method
+
+.method public static fact(I)I
+  .limit stack 4
+  .limit locals 2
+    
+  L0:
+   iload 0
+   iconst_1
+   if_icmpgt L1
+  L2:
+   iconst_1
+   ireturn
+  L1:
+   iload 0
+   iload 0
+   iconst_1
+   isub
+   invokestatic <packageDst>/Api.fact(I)I
+   imul
+   ireturn
+	L3:
+
+.end method
+
+>>
