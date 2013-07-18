@@ -41,7 +41,7 @@ Data un'istanza di tipo strutturato, è possibile accedere ai campi utilizzando 
 
 	b = struct data{12,07,2013}.giorno
 	c = struct progetto{10, true, struct data{1,7,2013}}
-	c.inizio = b
+	c.inizio.giorno = b
 
 ###Funzioni
 JPocl è fornito di una piccola libreria, composta dalle funzioni:
