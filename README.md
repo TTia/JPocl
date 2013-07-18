@@ -55,7 +55,7 @@ grammatica di JPocl, evita che l'utente ridefinisca le funzioni elencate.
 Oltre alle funzioni predefinite, l'utente può dichiararne di nuove. Le funzioni posso appartenere sia allo scope top-level, sia a scope interni; non è però possibile definire funzioni all'interno del corpo di altre.
 
 	struct data initData(int giorno, int mese, int anno){
-		d = struct data(giorno, mese, anno)
+		d = struct data{giorno, mese, anno}
 		return d
 	}
 	echo initData(12,07,2013).mese -> 7
