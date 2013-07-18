@@ -21,9 +21,9 @@ calc(stackLimit, localsLimit, stmts, structDecls, functionDecls, packageDst) ::=
 	return
 .end method
 
-<functionDecls>
+<functionDecls;separator="\n">
 <api(packageDst)>
-<structDecls>
+<structDecls;separator="\n">
 >>
 
 echo(expression,type) ::= <<
@@ -57,7 +57,7 @@ if(bexpr, tokenNum, stmts) ::= <<
 <bexpr>
 ifeq L1_<tokenNum>
 L2_<tokenNum>:
-<stmts>
+<stmts;separator="\n">
 L1_<tokenNum>:
 <newLine()>
 >>
@@ -65,7 +65,7 @@ L1_<tokenNum>:
 while(bexpr, tokenNum, stmts) ::= <<
 goto L1_<tokenNum>
 L2_<tokenNum>:
-<stmts>
+<stmts;separator="\n">
 L1_<tokenNum>:
 <bexpr>
 ifne L2_<tokenNum>
@@ -73,18 +73,12 @@ L3_<tokenNum>:
 <newLine()>
 >>
 
-block(stmts) ::= <<
-<stmts>
->>
-
-
-
 functionDecl(visibility, returnType, id, parameters, stmts, stackLimit, localsLimit) ::= <<
 .method <visibility> static <id>(<parameters>)<returnType>
   .limit stack <stackLimit>
   .limit locals <localsLimit>
 
-	<stmts>
+	<stmts;separator="\n">
 .end method
 >>
 
@@ -94,7 +88,7 @@ functionDeclVoid(visibility, returnType, id, parameters, stmts, stackLimit, loca
   .limit stack <stackLimit>
   .limit locals <localsLimit>
 
-	<stmts>
+	<stmts;separator="\n">
 	return
 .end method
 >>

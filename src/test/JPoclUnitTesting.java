@@ -12,7 +12,7 @@ public class JPoclUnitTesting {
 
 	@Before
 	public void beforeEachTest() {
-		Core.setCore("output", true);
+		Core.setCore("output", false);
 		core = Core.obtainCore();
 	}
 

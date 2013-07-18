@@ -1,0 +1,28 @@
+struct Data{int giorno; int mese; int anno;}
+
+
+struct Data initData(int giorno, int mese, int anno){
+    d = struct Data{giorno, mese, anno}
+    return d
+}
+
+{
+	echo initData(1,2,3)
+
+	struct Progetto{int giorniSpesi; bool agile; struct Data inizio;}
+	
+	struct Progetto initProgetto(int giorniSpesi, bool agile, struct Data inizio){
+		return struct Progetto{giorniSpesi, agile, inizio}
+	}
+	
+	struct Data meseProssimo(struct Data oggi){
+	    meseProssimo = struct Data{oggi.giorno, oggi.mese, oggi.anno}
+	    meseProssimo.mese = (meseProssimo.mese + 1) % 12
+	    return meseProssimo
+	}
+	
+	ipl = initProgetto(10, true, initData(19,7,2013))
+	echo ipl
+	
+	echo meseProssimo(initData(19,7,2013))
+}

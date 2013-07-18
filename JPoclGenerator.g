@@ -136,44 +136,53 @@ calc[String packageDst, LinkedHashMap<String,FunctionType> api, LinkedHashMap<St
 			
 			List<Object> structDeclsST = new LinkedList<Object>();
 			List<Object> functionDeclsST = new LinkedList<Object>();
-			List<Object> stmtsST = new LinkedList<Object>();			
+			List<Object> stringTemplates = new LinkedList<Object>();			
 		}
 		: ^(CALC (stat{
-				if($stat.structDeclST != null){
-					structDeclsST.add($stat.structDeclST);
-				}else if($stat.functionDeclsST != null){
-					functionDeclsST.add($stat.functionDeclsST);
-				}else{
-					stmtsST.add($stat.st);
-				}
-			})+)
+					structDeclsST.addAll($stat.structDeclST);
+					functionDeclsST.addAll($stat.functionDeclsST);
+					stringTemplates.addAll($stat.stringTemplates);
+				})+)
 		-> calc(stackLimit = {$FunctionStack::stackLimit},
 						localsLimit = {$BlockLocals::localsLimit},
-						stmts = {stmtsST}, structDecls={structDeclsST},
+						stmts = {stringTemplates}, structDecls={structDeclsST},
 						functionDecls={functionDeclsST}, packageDst={packageDst})
 		;
 
-stat returns [Object structDeclST, Object functionDeclsST]
+stat returns [List<Object> structDeclST, List<Object> functionDeclsST, List<Object> stringTemplates]
+			@init{
+				$structDeclST = new LinkedList<>();
+				$functionDeclsST = new LinkedList<>();
+				$stringTemplates = new LinkedList<>();
+			}
+			@after{
+				if($stat.st != null)
+					$stringTemplates.add($stat.st);
+			}
 			:
-			echo {$stat.st = $echo.st;}
+			echo {$stringTemplates.add($echo.st);}
 			
 			|^(ASSIGN expr qualifiedID {setStackLimit($expr.stackSize + 1);}) 
 				-> {$qualifiedID.start.getStaticType() instanceof StructType}?
 					 assignToObject(expr={$expr.st}, variable={$qualifiedID.st}, type={$qualifiedID.start.getStaticType()})
 				-> assign(expr={$expr.st}, variable={$qualifiedID.st})
 				
-			| functionCall {$stat.st = $functionCall.st; setStackLimit($functionCall.stackSize);}
+			| functionCall {$stringTemplates.add($functionCall.st); setStackLimit($functionCall.stackSize);}
 			
       |^('if' expr s=stat {setStackLimit($expr.stackSize);}) 
-       -> if(bexpr={$expr.st}, tokenNum={$start.getIndex()}, stmts={$s.st})
+       -> if(bexpr={$expr.st}, tokenNum={$start.getIndex()}, stmts={$s.stringTemplates})
       
       |^('while' expr s=stat) 
-       -> while(bexpr={$expr.st}, tokenNum={$start.getIndex()}, stmts={$s.st})
+       -> while(bexpr={$expr.st}, tokenNum={$start.getIndex()}, stmts={$s.stringTemplates})
       
-      | block {$stat.st = $block.st;}
-		  | structDecl {$structDeclST = $structDecl.st;}
-		  | functionDecl {$functionDeclsST = $functionDecl.st;}
-		  | returnStat {$stat.st = $returnStat.st;}
+      | block {
+	      $structDeclST.addAll($block.structDeclST);
+	      $functionDeclsST.addAll($block.functionDeclsST);
+	      $stringTemplates.addAll($block.stringTemplates);
+      }
+		  | structDecl {$structDeclST.add($structDecl.st);}
+		  | functionDecl {$functionDeclsST.add($functionDecl.st);}
+		  | returnStat {$stringTemplates.add($returnStat.st);}
 		  ;
 		  
 echo : ^(ECHO e=expr {
@@ -183,16 +192,23 @@ echo : ^(ECHO e=expr {
 			 -> {!(type instanceof StructType)}? echo(expression={$e.st},type={type.toString()})
 			 -> echoObject(expression={$e.st},type={type})
 			 ;
-block	
+block	returns [List<Object> structDeclST, List<Object> functionDeclsST, List<Object> stringTemplates]
 			scope BlockLocals;
 			@init{
 				$BlockLocals::locals = new LinkedList<>();
 				$BlockLocals::isFunctionBlock = false;
+				
+				$structDeclST = new LinkedList<>();
+				$functionDeclsST = new LinkedList<>();
+				$stringTemplates = new LinkedList<>();
 			}
-			: 
-				^(BLOCK s+=stat+) -> block(stmts={$s})
+			:
+				^(BLOCK (s+=stat{
+					$structDeclST.addAll(((stat_return)s).structDeclST);
+					$functionDeclsST.addAll(((stat_return)s).functionDeclsST);
+					$stringTemplates.addAll(((stat_return)s).stringTemplates);
+				})+)
 			;
-
 
 functionDecl 
 						scope BlockLocals;
@@ -200,15 +216,17 @@ functionDecl
 						@init{
 							$BlockLocals::locals = new LinkedList<>();
 							$BlockLocals::isFunctionBlock = true;
+							
+							List<Object> stringTemplates = new LinkedList<>();
 						}
 						:
-						^(FUNCDECL returnFunctionDecl ID parametersDecl? stmts+=stat*)
+						^(FUNCDECL returnFunctionDecl ID parametersDecl? (stat{stringTemplates.addAll($stat.stringTemplates);})*)
 						-> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}?
-							 functionDeclVoid(visibility={isTopLevel($start) ? "public" : ""}, returnType={$returnFunctionDecl.st},
-															id={$ID.text}, parameters={$parametersDecl.st}, stmts={$stmts},
+							 functionDeclVoid(visibility={isTopLevel($start) ? "public" : " "}, returnType={$returnFunctionDecl.st},
+															id={$ID.text}, parameters={$parametersDecl.st}, stmts={stringTemplates},
 															stackLimit={$FunctionStack::stackLimit}, localsLimit={$BlockLocals::localsLimit})
-						-> functionDecl(visibility={isTopLevel($start) ? "public" : ""}, returnType={$returnFunctionDecl.st},
-															id={$ID.text}, parameters={$parametersDecl.st}, stmts={$stmts},
+						-> functionDecl(visibility={isTopLevel($start) ? "public" : " "}, returnType={$returnFunctionDecl.st},
+															id={$ID.text}, parameters={$parametersDecl.st}, stmts={stringTemplates},
 															stackLimit={$FunctionStack::stackLimit}, localsLimit={$BlockLocals::localsLimit})
 						;
 

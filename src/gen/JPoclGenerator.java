@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g 2013-07-15 11:46:23
+// $ANTLR 3.4 C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g 2013-07-18 21:55:14
 
 package gen;
 
@@ -124,7 +124,7 @@ public static class STAttrMap extends HashMap {
   }
 }
     public String[] getTokenNames() { return JPoclGenerator.tokenNames; }
-    public String getGrammarFileName() { return "C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g"; }
+    public String getGrammarFileName() { return "C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g"; }
 
 
     	private String packageDst;
@@ -227,7 +227,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "calc"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:127:1: calc[String packageDst, LinkedHashMap<String,FunctionType> api, LinkedHashMap<String,StructType> dataTypes] : ^( CALC ( stat )+ ) -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stmtsSTstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:127:1: calc[String packageDst, LinkedHashMap<String,FunctionType> api, LinkedHashMap<String,StructType> dataTypes] : ^( CALC ( stat )+ ) -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stringTemplatesstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst);
     public final JPoclGenerator.calc_return calc(String packageDst, LinkedHashMap<String,FunctionType> api, LinkedHashMap<String,StructType> dataTypes) throws RecognitionException {
         BlockLocals_stack.push(new BlockLocals_scope());
         FunctionStack_stack.push(new FunctionStack_scope());
@@ -248,16 +248,16 @@ public static class STAttrMap extends HashMap {
         			
         			List<Object> structDeclsST = new LinkedList<Object>();
         			List<Object> functionDeclsST = new LinkedList<Object>();
-        			List<Object> stmtsST = new LinkedList<Object>();			
+        			List<Object> stringTemplates = new LinkedList<Object>();			
         		
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:141:3: ( ^( CALC ( stat )+ ) -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stmtsSTstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:141:5: ^( CALC ( stat )+ )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:141:3: ( ^( CALC ( stat )+ ) -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stringTemplatesstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:141:5: ^( CALC ( stat )+ )
             {
             match(input,CALC,FOLLOW_CALC_in_calc96); 
 
             match(input, Token.DOWN, null); 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:141:12: ( stat )+
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:141:12: ( stat )+
             int cnt1=0;
             loop1:
             do {
@@ -271,7 +271,7 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:141:13: stat
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:141:13: stat
             	    {
             	    pushFollow(FOLLOW_stat_in_calc99);
             	    stat1=stat();
@@ -280,14 +280,10 @@ public static class STAttrMap extends HashMap {
 
 
 
-            	    				if((stat1!=null?stat1.structDeclST:null) != null){
-            	    					structDeclsST.add((stat1!=null?stat1.structDeclST:null));
-            	    				}else if((stat1!=null?stat1.functionDeclsST:null) != null){
-            	    					functionDeclsST.add((stat1!=null?stat1.functionDeclsST:null));
-            	    				}else{
-            	    					stmtsST.add((stat1!=null?stat1.st:null));
-            	    				}
-            	    			
+            	    					structDeclsST.addAll((stat1!=null?stat1.structDeclST:null));
+            	    					functionDeclsST.addAll((stat1!=null?stat1.functionDeclsST:null));
+            	    					stringTemplates.addAll((stat1!=null?stat1.stringTemplates:null));
+            	    				
 
             	    }
             	    break;
@@ -306,9 +302,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 150:3: -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stmtsSTstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst)
+            // 146:3: -> calc(stackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimitstmts=stringTemplatesstructDecls=structDeclsSTfunctionDecls=functionDeclsSTpackageDst=packageDst)
             {
-                retval.st = templateLib.getInstanceOf("calc",new STAttrMap().put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit).put("stmts", stmtsST).put("structDecls", structDeclsST).put("functionDecls", functionDeclsST).put("packageDst", packageDst));
+                retval.st = templateLib.getInstanceOf("calc",new STAttrMap().put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit).put("stmts", stringTemplates).put("structDecls", structDeclsST).put("functionDecls", functionDeclsST).put("packageDst", packageDst));
             }
 
 
@@ -333,8 +329,9 @@ public static class STAttrMap extends HashMap {
 
 
     public static class stat_return extends TreeRuleReturnScope {
-        public Object structDeclST;
-        public Object functionDeclsST;
+        public List<Object> structDeclST;
+        public List<Object> functionDeclsST;
+        public List<Object> stringTemplates;
         public StringTemplate st;
         public Object getTemplate() { return st; }
         public String toString() { return st==null?null:st.toString(); }
@@ -342,7 +339,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "stat"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:156:1: stat returns [Object structDeclST, Object functionDeclsST] : ( echo | ^( ASSIGN expr qualifiedID ) -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType()) -> assign(expr=$expr.stvariable=$qualifiedID.st)| functionCall | ^( 'if' expr s= stat ) -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)| ^( 'while' expr s= stat ) -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)| block | structDecl | functionDecl | returnStat );
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:152:1: stat returns [List<Object> structDeclST, List<Object> functionDeclsST, List<Object> stringTemplates] : ( echo | ^( ASSIGN expr qualifiedID ) -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType()) -> assign(expr=$expr.stvariable=$qualifiedID.st)| functionCall | ^( 'if' expr s= stat ) -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)| ^( 'while' expr s= stat ) -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)| block | structDecl | functionDecl | returnStat );
     public final JPoclGenerator.stat_return stat() throws RecognitionException {
         JPoclGenerator.stat_return retval = new JPoclGenerator.stat_return();
         retval.start = input.LT(1);
@@ -371,8 +368,13 @@ public static class STAttrMap extends HashMap {
         JPoclGenerator.returnStat_return returnStat11 =null;
 
 
+
+        				retval.structDeclST = new LinkedList<>();
+        				retval.functionDeclsST = new LinkedList<>();
+        				retval.stringTemplates = new LinkedList<>();
+        			
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:157:4: ( echo | ^( ASSIGN expr qualifiedID ) -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType()) -> assign(expr=$expr.stvariable=$qualifiedID.st)| functionCall | ^( 'if' expr s= stat ) -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)| ^( 'while' expr s= stat ) -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)| block | structDecl | functionDecl | returnStat )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:162:4: ( echo | ^( ASSIGN expr qualifiedID ) -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType()) -> assign(expr=$expr.stvariable=$qualifiedID.st)| functionCall | ^( 'if' expr s= stat ) -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)| ^( 'while' expr s= stat ) -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)| block | structDecl | functionDecl | returnStat )
             int alt2=9;
             switch ( input.LA(1) ) {
             case ECHO:
@@ -430,31 +432,31 @@ public static class STAttrMap extends HashMap {
 
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:158:4: echo
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:163:4: echo
                     {
-                    pushFollow(FOLLOW_echo_in_stat184);
+                    pushFollow(FOLLOW_echo_in_stat198);
                     echo2=echo();
 
                     state._fsp--;
 
 
-                    retval.st = (echo2!=null?echo2.st:null);
+                    retval.stringTemplates.add((echo2!=null?echo2.st:null));
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:160:5: ^( ASSIGN expr qualifiedID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:165:5: ^( ASSIGN expr qualifiedID )
                     {
-                    match(input,ASSIGN,FOLLOW_ASSIGN_in_stat197); 
+                    match(input,ASSIGN,FOLLOW_ASSIGN_in_stat211); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_stat199);
+                    pushFollow(FOLLOW_expr_in_stat213);
                     expr3=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_qualifiedID_in_stat201);
+                    pushFollow(FOLLOW_qualifiedID_in_stat215);
                     qualifiedID4=qualifiedID();
 
                     state._fsp--;
@@ -466,12 +468,12 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 161:5: -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType())
+                    // 166:5: -> {$qualifiedID.start.getStaticType() instanceof StructType}? assignToObject(expr=$expr.stvariable=$qualifiedID.sttype=$qualifiedID.start.getStaticType())
                     if ((qualifiedID4!=null?((TypeTree)qualifiedID4.start):null).getStaticType() instanceof StructType) {
                         retval.st = templateLib.getInstanceOf("assignToObject",new STAttrMap().put("expr", (expr3!=null?expr3.st:null)).put("variable", (qualifiedID4!=null?qualifiedID4.st:null)).put("type", (qualifiedID4!=null?((TypeTree)qualifiedID4.start):null).getStaticType()));
                     }
 
-                    else // 163:5: -> assign(expr=$expr.stvariable=$qualifiedID.st)
+                    else // 168:5: -> assign(expr=$expr.stvariable=$qualifiedID.st)
                     {
                         retval.st = templateLib.getInstanceOf("assign",new STAttrMap().put("expr", (expr3!=null?expr3.st:null)).put("variable", (qualifiedID4!=null?qualifiedID4.st:null)));
                     }
@@ -481,31 +483,31 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:165:6: functionCall
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:170:6: functionCall
                     {
-                    pushFollow(FOLLOW_functionCall_in_stat266);
+                    pushFollow(FOLLOW_functionCall_in_stat280);
                     functionCall5=functionCall();
 
                     state._fsp--;
 
 
-                    retval.st = (functionCall5!=null?functionCall5.st:null); setStackLimit((functionCall5!=null?functionCall5.stackSize:0));
+                    retval.stringTemplates.add((functionCall5!=null?functionCall5.st:null)); setStackLimit((functionCall5!=null?functionCall5.stackSize:0));
 
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:167:8: ^( 'if' expr s= stat )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:172:8: ^( 'if' expr s= stat )
                     {
-                    match(input,40,FOLLOW_40_in_stat282); 
+                    match(input,40,FOLLOW_40_in_stat296); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_stat284);
+                    pushFollow(FOLLOW_expr_in_stat298);
                     expr6=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_stat_in_stat288);
+                    pushFollow(FOLLOW_stat_in_stat302);
                     s=stat();
 
                     state._fsp--;
@@ -517,9 +519,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 168:8: -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)
+                    // 173:8: -> if(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)
                     {
-                        retval.st = templateLib.getInstanceOf("if",new STAttrMap().put("bexpr", (expr6!=null?expr6.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()).put("stmts", (s!=null?s.st:null)));
+                        retval.st = templateLib.getInstanceOf("if",new STAttrMap().put("bexpr", (expr6!=null?expr6.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()).put("stmts", (s!=null?s.stringTemplates:null)));
                     }
 
 
@@ -527,18 +529,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:170:8: ^( 'while' expr s= stat )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:175:8: ^( 'while' expr s= stat )
                     {
-                    match(input,45,FOLLOW_45_in_stat335); 
+                    match(input,45,FOLLOW_45_in_stat349); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_stat337);
+                    pushFollow(FOLLOW_expr_in_stat351);
                     expr7=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_stat_in_stat341);
+                    pushFollow(FOLLOW_stat_in_stat355);
                     s=stat();
 
                     state._fsp--;
@@ -548,9 +550,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 171:8: -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.st)
+                    // 176:8: -> while(bexpr=$expr.sttokenNum=$start.getIndex()stmts=$s.stringTemplates)
                     {
-                        retval.st = templateLib.getInstanceOf("while",new STAttrMap().put("bexpr", (expr7!=null?expr7.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()).put("stmts", (s!=null?s.st:null)));
+                        retval.st = templateLib.getInstanceOf("while",new STAttrMap().put("bexpr", (expr7!=null?expr7.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()).put("stmts", (s!=null?s.stringTemplates:null)));
                     }
 
 
@@ -558,59 +560,67 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:173:9: block
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:178:9: block
                     {
-                    pushFollow(FOLLOW_block_in_stat386);
+                    pushFollow(FOLLOW_block_in_stat400);
                     block8=block();
 
                     state._fsp--;
 
 
-                    retval.st = (block8!=null?block8.st:null);
+
+                    	      retval.structDeclST.addAll((block8!=null?block8.structDeclST:null));
+                    	      retval.functionDeclsST.addAll((block8!=null?block8.functionDeclsST:null));
+                    	      retval.stringTemplates.addAll((block8!=null?block8.stringTemplates:null));
+                          
 
                     }
                     break;
                 case 7 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:174:7: structDecl
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:183:7: structDecl
                     {
-                    pushFollow(FOLLOW_structDecl_in_stat396);
+                    pushFollow(FOLLOW_structDecl_in_stat410);
                     structDecl9=structDecl();
 
                     state._fsp--;
 
 
-                    retval.structDeclST = (structDecl9!=null?structDecl9.st:null);
+                    retval.structDeclST.add((structDecl9!=null?structDecl9.st:null));
 
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:175:7: functionDecl
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:184:7: functionDecl
                     {
-                    pushFollow(FOLLOW_functionDecl_in_stat406);
+                    pushFollow(FOLLOW_functionDecl_in_stat420);
                     functionDecl10=functionDecl();
 
                     state._fsp--;
 
 
-                    retval.functionDeclsST = (functionDecl10!=null?functionDecl10.st:null);
+                    retval.functionDeclsST.add((functionDecl10!=null?functionDecl10.st:null));
 
                     }
                     break;
                 case 9 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:176:7: returnStat
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:185:7: returnStat
                     {
-                    pushFollow(FOLLOW_returnStat_in_stat416);
+                    pushFollow(FOLLOW_returnStat_in_stat430);
                     returnStat11=returnStat();
 
                     state._fsp--;
 
 
-                    retval.st = (returnStat11!=null?returnStat11.st:null);
+                    retval.stringTemplates.add((returnStat11!=null?returnStat11.st:null));
 
                     }
                     break;
 
             }
+
+            				if(retval.st != null)
+            					retval.stringTemplates.add(retval.st);
+            			
         }
 
         catch (RecognitionException re) {
@@ -633,7 +643,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "echo"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:179:1: echo : ^( ECHO e= expr ) -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString()) -> echoObject(expression=$e.sttype=type);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:188:1: echo : ^( ECHO e= expr ) -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString()) -> echoObject(expression=$e.sttype=type);
     public final JPoclGenerator.echo_return echo() throws RecognitionException {
         JPoclGenerator.echo_return retval = new JPoclGenerator.echo_return();
         retval.start = input.LT(1);
@@ -643,13 +653,13 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:179:6: ( ^( ECHO e= expr ) -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString()) -> echoObject(expression=$e.sttype=type))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:179:8: ^( ECHO e= expr )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:188:6: ( ^( ECHO e= expr ) -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString()) -> echoObject(expression=$e.sttype=type))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:188:8: ^( ECHO e= expr )
             {
-            match(input,ECHO,FOLLOW_ECHO_in_echo436); 
+            match(input,ECHO,FOLLOW_ECHO_in_echo450); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_expr_in_echo440);
+            pushFollow(FOLLOW_expr_in_echo454);
             e=expr();
 
             state._fsp--;
@@ -664,12 +674,12 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 183:5: -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString())
+            // 192:5: -> {!(type instanceof StructType)}? echo(expression=$e.sttype=type.toString())
             if (!(type instanceof StructType)) {
                 retval.st = templateLib.getInstanceOf("echo",new STAttrMap().put("expression", (e!=null?e.st:null)).put("type", type.toString()));
             }
 
-            else // 184:5: -> echoObject(expression=$e.sttype=type)
+            else // 193:5: -> echoObject(expression=$e.sttype=type)
             {
                 retval.st = templateLib.getInstanceOf("echoObject",new STAttrMap().put("expression", (e!=null?e.st:null)).put("type", type));
             }
@@ -693,6 +703,9 @@ public static class STAttrMap extends HashMap {
 
 
     public static class block_return extends TreeRuleReturnScope {
+        public List<Object> structDeclST;
+        public List<Object> functionDeclsST;
+        public List<Object> stringTemplates;
         public StringTemplate st;
         public Object getTemplate() { return st; }
         public String toString() { return st==null?null:st.toString(); }
@@ -700,7 +713,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "block"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:186:1: block : ^( BLOCK (s+= stat )+ ) -> block(stmts=$s);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:195:1: block returns [List<Object> structDeclST, List<Object> functionDeclsST, List<Object> stringTemplates] : ^( BLOCK (s+= stat )+ ) ;
     public final JPoclGenerator.block_return block() throws RecognitionException {
         BlockLocals_stack.push(new BlockLocals_scope());
 
@@ -713,15 +726,19 @@ public static class STAttrMap extends HashMap {
 
         				((BlockLocals_scope)BlockLocals_stack.peek()).locals = new LinkedList<>();
         				((BlockLocals_scope)BlockLocals_stack.peek()).isFunctionBlock = false;
+        				
+        				retval.structDeclST = new LinkedList<>();
+        				retval.functionDeclsST = new LinkedList<>();
+        				retval.stringTemplates = new LinkedList<>();
         			
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:192:4: ( ^( BLOCK (s+= stat )+ ) -> block(stmts=$s))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:193:5: ^( BLOCK (s+= stat )+ )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:205:4: ( ^( BLOCK (s+= stat )+ ) )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:206:5: ^( BLOCK (s+= stat )+ )
             {
-            match(input,BLOCK,FOLLOW_BLOCK_in_block517); 
+            match(input,BLOCK,FOLLOW_BLOCK_in_block533); 
 
             match(input, Token.DOWN, null); 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:193:14: (s+= stat )+
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:206:13: (s+= stat )+
             int cnt3=0;
             loop3:
             do {
@@ -735,9 +752,9 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt3) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:193:14: s+= stat
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:206:14: s+= stat
             	    {
-            	    pushFollow(FOLLOW_stat_in_block521);
+            	    pushFollow(FOLLOW_stat_in_block538);
             	    s=stat();
 
             	    state._fsp--;
@@ -745,6 +762,12 @@ public static class STAttrMap extends HashMap {
             	    if (list_s==null) list_s=new ArrayList();
             	    list_s.add(s.getTemplate());
 
+
+
+            	    					retval.structDeclST.addAll(((stat_return)s).structDeclST);
+            	    					retval.functionDeclsST.addAll(((stat_return)s).functionDeclsST);
+            	    					retval.stringTemplates.addAll(((stat_return)s).stringTemplates);
+            	    				
 
             	    }
             	    break;
@@ -760,14 +783,6 @@ public static class STAttrMap extends HashMap {
 
 
             match(input, Token.UP, null); 
-
-
-            // TEMPLATE REWRITE
-            // 193:23: -> block(stmts=$s)
-            {
-                retval.st = templateLib.getInstanceOf("block",new STAttrMap().put("stmts", list_s));
-            }
-
 
 
             }
@@ -796,7 +811,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "functionDecl"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:197:1: functionDecl : ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? (stmts+= stat )* ) -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit) -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:213:1: functionDecl : ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? ( stat )* ) -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit) -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit);
     public final JPoclGenerator.functionDecl_return functionDecl() throws RecognitionException {
         BlockLocals_stack.push(new BlockLocals_scope());
         FunctionStack_stack.push(new FunctionStack_scope());
@@ -805,33 +820,36 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        TypeTree ID13=null;
-        List list_stmts=null;
-        JPoclGenerator.returnFunctionDecl_return returnFunctionDecl12 =null;
+        TypeTree ID14=null;
+        JPoclGenerator.stat_return stat12 =null;
 
-        JPoclGenerator.parametersDecl_return parametersDecl14 =null;
+        JPoclGenerator.returnFunctionDecl_return returnFunctionDecl13 =null;
 
-        RuleReturnScope stmts = null;
+        JPoclGenerator.parametersDecl_return parametersDecl15 =null;
+
+
 
         							((BlockLocals_scope)BlockLocals_stack.peek()).locals = new LinkedList<>();
         							((BlockLocals_scope)BlockLocals_stack.peek()).isFunctionBlock = true;
+        							
+        							List<Object> stringTemplates = new LinkedList<>();
         						
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:204:7: ( ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? (stmts+= stat )* ) -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit) -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:205:7: ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? (stmts+= stat )* )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:222:7: ( ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? ( stat )* ) -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit) -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:223:7: ^( FUNCDECL returnFunctionDecl ID ( parametersDecl )? ( stat )* )
             {
-            match(input,FUNCDECL,FOLLOW_FUNCDECL_in_functionDecl591); 
+            match(input,FUNCDECL,FOLLOW_FUNCDECL_in_functionDecl600); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_returnFunctionDecl_in_functionDecl593);
-            returnFunctionDecl12=returnFunctionDecl();
+            pushFollow(FOLLOW_returnFunctionDecl_in_functionDecl602);
+            returnFunctionDecl13=returnFunctionDecl();
 
             state._fsp--;
 
 
-            ID13=(TypeTree)match(input,ID,FOLLOW_ID_in_functionDecl595); 
+            ID14=(TypeTree)match(input,ID,FOLLOW_ID_in_functionDecl604); 
 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:205:40: ( parametersDecl )?
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:223:40: ( parametersDecl )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -840,10 +858,10 @@ public static class STAttrMap extends HashMap {
             }
             switch (alt4) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:205:40: parametersDecl
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:223:40: parametersDecl
                     {
-                    pushFollow(FOLLOW_parametersDecl_in_functionDecl597);
-                    parametersDecl14=parametersDecl();
+                    pushFollow(FOLLOW_parametersDecl_in_functionDecl606);
+                    parametersDecl15=parametersDecl();
 
                     state._fsp--;
 
@@ -854,7 +872,7 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:205:61: (stmts+= stat )*
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:223:56: ( stat )*
             loop5:
             do {
                 int alt5=2;
@@ -867,16 +885,15 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt5) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:205:61: stmts+= stat
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:223:57: stat
             	    {
-            	    pushFollow(FOLLOW_stat_in_functionDecl602);
-            	    stmts=stat();
+            	    pushFollow(FOLLOW_stat_in_functionDecl610);
+            	    stat12=stat();
 
             	    state._fsp--;
 
-            	    if (list_stmts==null) list_stmts=new ArrayList();
-            	    list_stmts.add(stmts.getTemplate());
 
+            	    stringTemplates.addAll((stat12!=null?stat12.stringTemplates:null));
 
             	    }
             	    break;
@@ -891,14 +908,14 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 206:7: -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit)
-            if (api.get((ID13!=null?ID13.getText():null)).getReturnType().equalsTo(PrimType.VOID)) {
-                retval.st = templateLib.getInstanceOf("functionDeclVoid",new STAttrMap().put("visibility", isTopLevel(((TypeTree)retval.start)) ? "public" : "").put("returnType", (returnFunctionDecl12!=null?returnFunctionDecl12.st:null)).put("id", (ID13!=null?ID13.getText():null)).put("parameters", (parametersDecl14!=null?parametersDecl14.st:null)).put("stmts", list_stmts).put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit));
+            // 224:7: -> {api.get($ID.text).getReturnType().equalsTo(PrimType.VOID)}? functionDeclVoid(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit)
+            if (api.get((ID14!=null?ID14.getText():null)).getReturnType().equalsTo(PrimType.VOID)) {
+                retval.st = templateLib.getInstanceOf("functionDeclVoid",new STAttrMap().put("visibility", isTopLevel(((TypeTree)retval.start)) ? "public" : " ").put("returnType", (returnFunctionDecl13!=null?returnFunctionDecl13.st:null)).put("id", (ID14!=null?ID14.getText():null)).put("parameters", (parametersDecl15!=null?parametersDecl15.st:null)).put("stmts", stringTemplates).put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit));
             }
 
-            else // 210:7: -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \"\"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=$stmtsstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit)
+            else // 228:7: -> functionDecl(visibility=isTopLevel($start) ? \"public\" : \" \"returnType=$returnFunctionDecl.stid=$ID.textparameters=$parametersDecl.ststmts=stringTemplatesstackLimit=$FunctionStack::stackLimitlocalsLimit=$BlockLocals::localsLimit)
             {
-                retval.st = templateLib.getInstanceOf("functionDecl",new STAttrMap().put("visibility", isTopLevel(((TypeTree)retval.start)) ? "public" : "").put("returnType", (returnFunctionDecl12!=null?returnFunctionDecl12.st:null)).put("id", (ID13!=null?ID13.getText():null)).put("parameters", (parametersDecl14!=null?parametersDecl14.st:null)).put("stmts", list_stmts).put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit));
+                retval.st = templateLib.getInstanceOf("functionDecl",new STAttrMap().put("visibility", isTopLevel(((TypeTree)retval.start)) ? "public" : " ").put("returnType", (returnFunctionDecl13!=null?returnFunctionDecl13.st:null)).put("id", (ID14!=null?ID14.getText():null)).put("parameters", (parametersDecl15!=null?parametersDecl15.st:null)).put("stmts", stringTemplates).put("stackLimit", ((FunctionStack_scope)FunctionStack_stack.peek()).stackLimit).put("localsLimit", ((BlockLocals_scope)BlockLocals_stack.peek()).localsLimit));
             }
 
 
@@ -930,16 +947,16 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "returnFunctionDecl"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:215:1: returnFunctionDecl : ( 'int' -> type(type=PrimType.INT)| 'bool' -> type(type=PrimType.BOOL)| 'void' -> type(type=PrimType.VOID)| ID -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\"));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:233:1: returnFunctionDecl : ( 'int' -> type(type=PrimType.INT)| 'bool' -> type(type=PrimType.BOOL)| 'void' -> type(type=PrimType.VOID)| ID -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\"));
     public final JPoclGenerator.returnFunctionDecl_return returnFunctionDecl() throws RecognitionException {
         JPoclGenerator.returnFunctionDecl_return retval = new JPoclGenerator.returnFunctionDecl_return();
         retval.start = input.LT(1);
 
 
-        TypeTree ID15=null;
+        TypeTree ID16=null;
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:215:20: ( 'int' -> type(type=PrimType.INT)| 'bool' -> type(type=PrimType.BOOL)| 'void' -> type(type=PrimType.VOID)| ID -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\"))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:233:20: ( 'int' -> type(type=PrimType.INT)| 'bool' -> type(type=PrimType.BOOL)| 'void' -> type(type=PrimType.VOID)| ID -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\"))
             int alt6=4;
             switch ( input.LA(1) ) {
             case 41:
@@ -972,12 +989,12 @@ public static class STAttrMap extends HashMap {
 
             switch (alt6) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:216:12: 'int'
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:234:12: 'int'
                     {
-                    match(input,41,FOLLOW_41_in_returnFunctionDecl790); 
+                    match(input,41,FOLLOW_41_in_returnFunctionDecl800); 
 
                     // TEMPLATE REWRITE
-                    // 216:18: -> type(type=PrimType.INT)
+                    // 234:18: -> type(type=PrimType.INT)
                     {
                         retval.st = templateLib.getInstanceOf("type",new STAttrMap().put("type", PrimType.INT));
                     }
@@ -987,12 +1004,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:217:13: 'bool'
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:235:13: 'bool'
                     {
-                    match(input,39,FOLLOW_39_in_returnFunctionDecl813); 
+                    match(input,39,FOLLOW_39_in_returnFunctionDecl823); 
 
                     // TEMPLATE REWRITE
-                    // 217:20: -> type(type=PrimType.BOOL)
+                    // 235:20: -> type(type=PrimType.BOOL)
                     {
                         retval.st = templateLib.getInstanceOf("type",new STAttrMap().put("type", PrimType.BOOL));
                     }
@@ -1002,12 +1019,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:218:13: 'void'
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:236:13: 'void'
                     {
-                    match(input,44,FOLLOW_44_in_returnFunctionDecl836); 
+                    match(input,44,FOLLOW_44_in_returnFunctionDecl846); 
 
                     // TEMPLATE REWRITE
-                    // 218:20: -> type(type=PrimType.VOID)
+                    // 236:20: -> type(type=PrimType.VOID)
                     {
                         retval.st = templateLib.getInstanceOf("type",new STAttrMap().put("type", PrimType.VOID));
                     }
@@ -1017,14 +1034,14 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:219:13: ID
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:237:13: ID
                     {
-                    ID15=(TypeTree)match(input,ID,FOLLOW_ID_in_returnFunctionDecl859); 
+                    ID16=(TypeTree)match(input,ID,FOLLOW_ID_in_returnFunctionDecl869); 
 
                     // TEMPLATE REWRITE
-                    // 219:16: -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\")
+                    // 237:16: -> type(type=\"L\"+packageDst+\"/\"+$ID.text+\";\")
                     {
-                        retval.st = templateLib.getInstanceOf("type",new STAttrMap().put("type", "L"+packageDst+"/"+(ID15!=null?ID15.getText():null)+";"));
+                        retval.st = templateLib.getInstanceOf("type",new STAttrMap().put("type", "L"+packageDst+"/"+(ID16!=null?ID16.getText():null)+";"));
                     }
 
 
@@ -1055,17 +1072,17 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "returnStat"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:222:1: returnStat : ( 'return' -> returnStat(stat=\"return\")| ^( 'return' expr ) -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st) -> returnStat(stat=\"areturn\"expr=$expr.st));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:240:1: returnStat : ( 'return' -> returnStat(stat=\"return\")| ^( 'return' expr ) -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st) -> returnStat(stat=\"areturn\"expr=$expr.st));
     public final JPoclGenerator.returnStat_return returnStat() throws RecognitionException {
         JPoclGenerator.returnStat_return retval = new JPoclGenerator.returnStat_return();
         retval.start = input.LT(1);
 
 
-        JPoclGenerator.expr_return expr16 =null;
+        JPoclGenerator.expr_return expr17 =null;
 
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:222:12: ( 'return' -> returnStat(stat=\"return\")| ^( 'return' expr ) -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st) -> returnStat(stat=\"areturn\"expr=$expr.st))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:240:12: ( 'return' -> returnStat(stat=\"return\")| ^( 'return' expr ) -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st) -> returnStat(stat=\"areturn\"expr=$expr.st))
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1095,12 +1112,12 @@ public static class STAttrMap extends HashMap {
             }
             switch (alt7) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:223:6: 'return'
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:241:6: 'return'
                     {
-                    match(input,42,FOLLOW_42_in_returnStat892); 
+                    match(input,42,FOLLOW_42_in_returnStat902); 
 
                     // TEMPLATE REWRITE
-                    // 223:15: -> returnStat(stat=\"return\")
+                    // 241:15: -> returnStat(stat=\"return\")
                     {
                         retval.st = templateLib.getInstanceOf("returnStat",new STAttrMap().put("stat", "return"));
                     }
@@ -1110,32 +1127,32 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:224:8: ^( 'return' expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:242:8: ^( 'return' expr )
                     {
-                    match(input,42,FOLLOW_42_in_returnStat911); 
+                    match(input,42,FOLLOW_42_in_returnStat921); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_returnStat913);
-                    expr16=expr();
+                    pushFollow(FOLLOW_expr_in_returnStat923);
+                    expr17=expr();
 
                     state._fsp--;
 
 
-                    setStackLimit((expr16!=null?expr16.stackSize:0));
+                    setStackLimit((expr17!=null?expr17.stackSize:0));
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 225:8: -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st)
-                    if ((expr16!=null?((TypeTree)expr16.start):null).getStaticType().equalsTo(PrimType.INT) 
-                    											|| (expr16!=null?((TypeTree)expr16.start):null).getStaticType().equalsTo(PrimType.BOOL)) {
-                        retval.st = templateLib.getInstanceOf("returnStat",new STAttrMap().put("stat", "ireturn").put("expr", (expr16!=null?expr16.st:null)));
+                    // 243:8: -> {$expr.start.getStaticType().equalsTo(PrimType.INT) \r\n\t\t\t\t\t\t\t\t\t\t\t|| $expr.start.getStaticType().equalsTo(PrimType.BOOL)}? returnStat(stat=\"ireturn\"expr=$expr.st)
+                    if ((expr17!=null?((TypeTree)expr17.start):null).getStaticType().equalsTo(PrimType.INT) 
+                    											|| (expr17!=null?((TypeTree)expr17.start):null).getStaticType().equalsTo(PrimType.BOOL)) {
+                        retval.st = templateLib.getInstanceOf("returnStat",new STAttrMap().put("stat", "ireturn").put("expr", (expr17!=null?expr17.st:null)));
                     }
 
-                    else // 228:8: -> returnStat(stat=\"areturn\"expr=$expr.st)
+                    else // 246:8: -> returnStat(stat=\"areturn\"expr=$expr.st)
                     {
-                        retval.st = templateLib.getInstanceOf("returnStat",new STAttrMap().put("stat", "areturn").put("expr", (expr16!=null?expr16.st:null)));
+                        retval.st = templateLib.getInstanceOf("returnStat",new STAttrMap().put("stat", "areturn").put("expr", (expr17!=null?expr17.st:null)));
                     }
 
 
@@ -1166,7 +1183,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "parametersDecl"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:231:1: parametersDecl : ^( PDECS (p+= parameterDecl )+ ) -> parametersDecl(parameters=$p);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:249:1: parametersDecl : ^( PDECS (p+= parameterDecl )+ ) -> parametersDecl(parameters=$p);
     public final JPoclGenerator.parametersDecl_return parametersDecl() throws RecognitionException {
         JPoclGenerator.parametersDecl_return retval = new JPoclGenerator.parametersDecl_return();
         retval.start = input.LT(1);
@@ -1175,13 +1192,13 @@ public static class STAttrMap extends HashMap {
         List list_p=null;
         RuleReturnScope p = null;
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:231:16: ( ^( PDECS (p+= parameterDecl )+ ) -> parametersDecl(parameters=$p))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:232:9: ^( PDECS (p+= parameterDecl )+ )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:249:16: ( ^( PDECS (p+= parameterDecl )+ ) -> parametersDecl(parameters=$p))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:250:9: ^( PDECS (p+= parameterDecl )+ )
             {
-            match(input,PDECS,FOLLOW_PDECS_in_parametersDecl995); 
+            match(input,PDECS,FOLLOW_PDECS_in_parametersDecl1005); 
 
             match(input, Token.DOWN, null); 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:232:18: (p+= parameterDecl )+
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:250:18: (p+= parameterDecl )+
             int cnt8=0;
             loop8:
             do {
@@ -1195,9 +1212,9 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt8) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:232:18: p+= parameterDecl
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:250:18: p+= parameterDecl
             	    {
-            	    pushFollow(FOLLOW_parameterDecl_in_parametersDecl999);
+            	    pushFollow(FOLLOW_parameterDecl_in_parametersDecl1009);
             	    p=parameterDecl();
 
             	    state._fsp--;
@@ -1223,7 +1240,7 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 232:36: -> parametersDecl(parameters=$p)
+            // 250:36: -> parametersDecl(parameters=$p)
             {
                 retval.st = templateLib.getInstanceOf("parametersDecl",new STAttrMap().put("parameters", list_p));
             }
@@ -1254,7 +1271,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "parameterDecl"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:235:1: parameterDecl : ( ^( 'int' ID ) -> parameter(parameter=\"I\")| ^( 'bool' ID ) -> parameter(parameter=\"Z\")| ^( 'struct' structType= ID structID= ID ) -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\"));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:253:1: parameterDecl : ( ^( 'int' ID ) -> parameter(parameter=\"I\")| ^( 'bool' ID ) -> parameter(parameter=\"Z\")| ^( 'struct' structType= ID structID= ID ) -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\"));
     public final JPoclGenerator.parameterDecl_return parameterDecl() throws RecognitionException {
         JPoclGenerator.parameterDecl_return retval = new JPoclGenerator.parameterDecl_return();
         retval.start = input.LT(1);
@@ -1262,14 +1279,14 @@ public static class STAttrMap extends HashMap {
 
         TypeTree structType=null;
         TypeTree structID=null;
-        TypeTree ID17=null;
         TypeTree ID18=null;
+        TypeTree ID19=null;
 
 
         								String pid = "";
         							
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:242:8: ( ^( 'int' ID ) -> parameter(parameter=\"I\")| ^( 'bool' ID ) -> parameter(parameter=\"Z\")| ^( 'struct' structType= ID structID= ID ) -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\"))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:260:8: ( ^( 'int' ID ) -> parameter(parameter=\"I\")| ^( 'bool' ID ) -> parameter(parameter=\"Z\")| ^( 'struct' structType= ID structID= ID ) -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\"))
             int alt9=3;
             switch ( input.LA(1) ) {
             case 41:
@@ -1297,20 +1314,20 @@ public static class STAttrMap extends HashMap {
 
             switch (alt9) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:243:8: ^( 'int' ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:261:8: ^( 'int' ID )
                     {
-                    match(input,41,FOLLOW_41_in_parameterDecl1065); 
+                    match(input,41,FOLLOW_41_in_parameterDecl1075); 
 
                     match(input, Token.DOWN, null); 
-                    ID17=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1067); 
+                    ID18=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1077); 
 
-                    pid = (ID17!=null?ID17.getText():null);
+                    pid = (ID18!=null?ID18.getText():null);
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 243:38: -> parameter(parameter=\"I\")
+                    // 261:38: -> parameter(parameter=\"I\")
                     {
                         retval.st = templateLib.getInstanceOf("parameter",new STAttrMap().put("parameter", "I"));
                     }
@@ -1320,20 +1337,20 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:244:9: ^( 'bool' ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:262:9: ^( 'bool' ID )
                     {
-                    match(input,39,FOLLOW_39_in_parameterDecl1090); 
+                    match(input,39,FOLLOW_39_in_parameterDecl1100); 
 
                     match(input, Token.DOWN, null); 
-                    ID18=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1092); 
+                    ID19=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1102); 
 
-                    pid = (ID18!=null?ID18.getText():null);
+                    pid = (ID19!=null?ID19.getText():null);
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 244:40: -> parameter(parameter=\"Z\")
+                    // 262:40: -> parameter(parameter=\"Z\")
                     {
                         retval.st = templateLib.getInstanceOf("parameter",new STAttrMap().put("parameter", "Z"));
                     }
@@ -1343,14 +1360,14 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:245:9: ^( 'struct' structType= ID structID= ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:263:9: ^( 'struct' structType= ID structID= ID )
                     {
-                    match(input,43,FOLLOW_43_in_parameterDecl1115); 
+                    match(input,43,FOLLOW_43_in_parameterDecl1125); 
 
                     match(input, Token.DOWN, null); 
-                    structType=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1119); 
+                    structType=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1129); 
 
-                    structID=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1123); 
+                    structID=(TypeTree)match(input,ID,FOLLOW_ID_in_parameterDecl1133); 
 
                     pid = (structID!=null?structID.getText():null);
 
@@ -1358,7 +1375,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 246:9: -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\")
+                    // 264:9: -> parameter(parameter=\"L\"+packageDst+\"/\"+$structType.text+\";\")
                     {
                         retval.st = templateLib.getInstanceOf("parameter",new STAttrMap().put("parameter", "L"+packageDst+"/"+(structType!=null?structType.getText():null)+";"));
                     }
@@ -1394,30 +1411,30 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "structDecl"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:249:1: structDecl : ^( 'struct' ID (sm+= structMember[visibility] )+ ) -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:267:1: structDecl : ^( 'struct' ID (sm+= structMember[visibility] )+ ) -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst));
     public final JPoclGenerator.structDecl_return structDecl() throws RecognitionException {
         JPoclGenerator.structDecl_return retval = new JPoclGenerator.structDecl_return();
         retval.start = input.LT(1);
 
 
-        TypeTree ID19=null;
+        TypeTree ID20=null;
         List list_sm=null;
         RuleReturnScope sm = null;
 
         					 		String visibility;
         					 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:253:7: ( ^( 'struct' ID (sm+= structMember[visibility] )+ ) -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst)))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:253:8: ^( 'struct' ID (sm+= structMember[visibility] )+ )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:271:7: ( ^( 'struct' ID (sm+= structMember[visibility] )+ ) -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst)))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:271:8: ^( 'struct' ID (sm+= structMember[visibility] )+ )
             {
             visibility = isTopLevel(((TypeTree)retval.start)) ? "public" : "";
 
-            match(input,43,FOLLOW_43_in_structDecl1186); 
+            match(input,43,FOLLOW_43_in_structDecl1196); 
 
             match(input, Token.DOWN, null); 
-            ID19=(TypeTree)match(input,ID,FOLLOW_ID_in_structDecl1188); 
+            ID20=(TypeTree)match(input,ID,FOLLOW_ID_in_structDecl1198); 
 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:254:23: (sm+= structMember[visibility] )+
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:272:23: (sm+= structMember[visibility] )+
             int cnt10=0;
             loop10:
             do {
@@ -1431,9 +1448,9 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt10) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:254:23: sm+= structMember[visibility]
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:272:23: sm+= structMember[visibility]
             	    {
-            	    pushFollow(FOLLOW_structMember_in_structDecl1192);
+            	    pushFollow(FOLLOW_structMember_in_structDecl1202);
             	    sm=structMember(visibility);
 
             	    state._fsp--;
@@ -1456,16 +1473,16 @@ public static class STAttrMap extends HashMap {
 
 
 
-            					 	StructType structType = dataTypes.get((ID19!=null?ID19.getText():null));
+            					 	StructType structType = dataTypes.get((ID20!=null?ID20.getText():null));
             					 
 
             match(input, Token.UP, null); 
 
 
             // TEMPLATE REWRITE
-            // 257:7: -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst))
+            // 275:7: -> structDecl(id=$ID.textvisibility=visibilitypackageDst=packageDstconstructor=structType.buildConstructor(visibility, packageDst)member=$smtoStringMethod=structType.buildToString(packageDst)equalsMethod=structType.buildEquals(packageDst))
             {
-                retval.st = templateLib.getInstanceOf("structDecl",new STAttrMap().put("id", (ID19!=null?ID19.getText():null)).put("visibility", visibility).put("packageDst", packageDst).put("constructor", structType.buildConstructor(visibility, packageDst)).put("member", list_sm).put("toStringMethod", structType.buildToString(packageDst)).put("equalsMethod", structType.buildEquals(packageDst)));
+                retval.st = templateLib.getInstanceOf("structDecl",new STAttrMap().put("id", (ID20!=null?ID20.getText():null)).put("visibility", visibility).put("packageDst", packageDst).put("constructor", structType.buildConstructor(visibility, packageDst)).put("member", list_sm).put("toStringMethod", structType.buildToString(packageDst)).put("equalsMethod", structType.buildEquals(packageDst)));
             }
 
 
@@ -1494,7 +1511,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "structMember"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:263:1: structMember[String visibility] : ( ^( 'int' ID ) -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)| ^( 'bool' id2= ID ) -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)| ^( 'struct' structType= ID structID= ID ) -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:281:1: structMember[String visibility] : ( ^( 'int' ID ) -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)| ^( 'bool' id2= ID ) -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)| ^( 'struct' structType= ID structID= ID ) -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility));
     public final JPoclGenerator.structMember_return structMember(String visibility) throws RecognitionException {
         JPoclGenerator.structMember_return retval = new JPoclGenerator.structMember_return();
         retval.start = input.LT(1);
@@ -1503,10 +1520,10 @@ public static class STAttrMap extends HashMap {
         TypeTree id2=null;
         TypeTree structType=null;
         TypeTree structID=null;
-        TypeTree ID20=null;
+        TypeTree ID21=null;
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:263:33: ( ^( 'int' ID ) -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)| ^( 'bool' id2= ID ) -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)| ^( 'struct' structType= ID structID= ID ) -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:281:33: ( ^( 'int' ID ) -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)| ^( 'bool' id2= ID ) -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)| ^( 'struct' structType= ID structID= ID ) -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility))
             int alt11=3;
             switch ( input.LA(1) ) {
             case 41:
@@ -1534,20 +1551,20 @@ public static class STAttrMap extends HashMap {
 
             switch (alt11) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:264:7: ^( 'int' ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:282:7: ^( 'int' ID )
                     {
-                    match(input,41,FOLLOW_41_in_structMember1304); 
+                    match(input,41,FOLLOW_41_in_structMember1314); 
 
                     match(input, Token.DOWN, null); 
-                    ID20=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1306); 
+                    ID21=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1316); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 264:19: -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)
+                    // 282:19: -> structMember(type=\"I\"id=$ID.textvisibility=$visibility)
                     {
-                        retval.st = templateLib.getInstanceOf("structMember",new STAttrMap().put("type", "I").put("id", (ID20!=null?ID20.getText():null)).put("visibility", visibility));
+                        retval.st = templateLib.getInstanceOf("structMember",new STAttrMap().put("type", "I").put("id", (ID21!=null?ID21.getText():null)).put("visibility", visibility));
                     }
 
 
@@ -1555,18 +1572,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:265:9: ^( 'bool' id2= ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:283:9: ^( 'bool' id2= ID )
                     {
-                    match(input,39,FOLLOW_39_in_structMember1337); 
+                    match(input,39,FOLLOW_39_in_structMember1347); 
 
                     match(input, Token.DOWN, null); 
-                    id2=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1341); 
+                    id2=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1351); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 265:26: -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)
+                    // 283:26: -> structMember(type=\"Z\"id=$ID.textvisibility=$visibility)
                     {
                         retval.st = templateLib.getInstanceOf("structMember",new STAttrMap().put("type", "Z").put("id", (id2!=null?id2.getText():null)).put("visibility", visibility));
                     }
@@ -1576,20 +1593,20 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:266:9: ^( 'struct' structType= ID structID= ID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:284:9: ^( 'struct' structType= ID structID= ID )
                     {
-                    match(input,43,FOLLOW_43_in_structMember1372); 
+                    match(input,43,FOLLOW_43_in_structMember1382); 
 
                     match(input, Token.DOWN, null); 
-                    structType=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1376); 
+                    structType=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1386); 
 
-                    structID=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1380); 
+                    structID=(TypeTree)match(input,ID,FOLLOW_ID_in_structMember1390); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 267:8: -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility)
+                    // 285:8: -> structMember(type=dataTypes.get($structType.text).getObjectType(packageDst)id=$structID.textvisibility=$visibility)
                     {
                         retval.st = templateLib.getInstanceOf("structMember",new STAttrMap().put("type", dataTypes.get((structType!=null?structType.getText():null)).getObjectType(packageDst)).put("id", (structID!=null?structID.getText():null)).put("visibility", visibility));
                     }
@@ -1623,37 +1640,37 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "expr"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:271:1: expr returns [int stackSize] : ( ^( '^' t1= expr t2= expr ) -> pow(leftExpr=$t1.strightExpr=$t2.st)| ^( '+' t1= expr t2= expr ) -> add(leftExpr=$t1.strightExpr=$t2.st)| ^( '-' t1= expr t2= expr ) -> sub(leftExpr=$t1.strightExpr=$t2.st)| ^( '%' t1= expr t2= expr ) -> remainder(leftExpr=$t1.strightExpr=$t2.st)| ^( '*' t1= expr t2= expr ) -> mul(leftExpr=$t1.strightExpr=$t2.st)| ^( '/' t1= expr t2= expr ) -> div(leftExpr=$t1.strightExpr=$t2.st)| ^( '!' t= expr ) -> fact(expr=$t.stpackageDst=packageDst)| ^( '~' t= expr ) -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)| ^( PLUS t= expr ) -> unaryPlus(expr=$t.st)| ^( SIGN t= expr ) -> unaryMinus(expr=$t.st)| ^( '<' t1= expr t2= expr ) -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '<=' t1= expr t2= expr ) -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>' t1= expr t2= expr ) -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>=' t1= expr t2= expr ) -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| equals | ^( '&&' t1= expr t2= expr ) -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '||' t1= expr t2= expr ) -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( DOT ( functionCall | structValue ) qualifiedID ) -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)| functionCall | structValue | qualifiedID | INT -> constant(value=$INT.text)| BOOLEAN -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\"));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:289:1: expr returns [int stackSize] : ( ^( '^' t1= expr t2= expr ) -> pow(leftExpr=$t1.strightExpr=$t2.st)| ^( '+' t1= expr t2= expr ) -> add(leftExpr=$t1.strightExpr=$t2.st)| ^( '-' t1= expr t2= expr ) -> sub(leftExpr=$t1.strightExpr=$t2.st)| ^( '%' t1= expr t2= expr ) -> remainder(leftExpr=$t1.strightExpr=$t2.st)| ^( '*' t1= expr t2= expr ) -> mul(leftExpr=$t1.strightExpr=$t2.st)| ^( '/' t1= expr t2= expr ) -> div(leftExpr=$t1.strightExpr=$t2.st)| ^( '!' t= expr ) -> fact(expr=$t.stpackageDst=packageDst)| ^( '~' t= expr ) -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)| ^( PLUS t= expr ) -> unaryPlus(expr=$t.st)| ^( SIGN t= expr ) -> unaryMinus(expr=$t.st)| ^( '<' t1= expr t2= expr ) -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '<=' t1= expr t2= expr ) -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>' t1= expr t2= expr ) -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>=' t1= expr t2= expr ) -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| equals | ^( '&&' t1= expr t2= expr ) -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '||' t1= expr t2= expr ) -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( DOT ( functionCall | structValue ) qualifiedID ) -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)| functionCall | structValue | qualifiedID | INT -> constant(value=$INT.text)| BOOLEAN -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\"));
     public final JPoclGenerator.expr_return expr() throws RecognitionException {
         JPoclGenerator.expr_return retval = new JPoclGenerator.expr_return();
         retval.start = input.LT(1);
 
 
-        TypeTree INT28=null;
-        TypeTree BOOLEAN29=null;
+        TypeTree INT29=null;
+        TypeTree BOOLEAN30=null;
         JPoclGenerator.expr_return t1 =null;
 
         JPoclGenerator.expr_return t2 =null;
 
         JPoclGenerator.expr_return t =null;
 
-        JPoclGenerator.equals_return equals21 =null;
+        JPoclGenerator.equals_return equals22 =null;
 
-        JPoclGenerator.functionCall_return functionCall22 =null;
+        JPoclGenerator.functionCall_return functionCall23 =null;
 
-        JPoclGenerator.structValue_return structValue23 =null;
+        JPoclGenerator.structValue_return structValue24 =null;
 
-        JPoclGenerator.qualifiedID_return qualifiedID24 =null;
+        JPoclGenerator.qualifiedID_return qualifiedID25 =null;
 
-        JPoclGenerator.functionCall_return functionCall25 =null;
+        JPoclGenerator.functionCall_return functionCall26 =null;
 
-        JPoclGenerator.structValue_return structValue26 =null;
+        JPoclGenerator.structValue_return structValue27 =null;
 
-        JPoclGenerator.qualifiedID_return qualifiedID27 =null;
+        JPoclGenerator.qualifiedID_return qualifiedID28 =null;
 
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:272:5: ( ^( '^' t1= expr t2= expr ) -> pow(leftExpr=$t1.strightExpr=$t2.st)| ^( '+' t1= expr t2= expr ) -> add(leftExpr=$t1.strightExpr=$t2.st)| ^( '-' t1= expr t2= expr ) -> sub(leftExpr=$t1.strightExpr=$t2.st)| ^( '%' t1= expr t2= expr ) -> remainder(leftExpr=$t1.strightExpr=$t2.st)| ^( '*' t1= expr t2= expr ) -> mul(leftExpr=$t1.strightExpr=$t2.st)| ^( '/' t1= expr t2= expr ) -> div(leftExpr=$t1.strightExpr=$t2.st)| ^( '!' t= expr ) -> fact(expr=$t.stpackageDst=packageDst)| ^( '~' t= expr ) -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)| ^( PLUS t= expr ) -> unaryPlus(expr=$t.st)| ^( SIGN t= expr ) -> unaryMinus(expr=$t.st)| ^( '<' t1= expr t2= expr ) -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '<=' t1= expr t2= expr ) -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>' t1= expr t2= expr ) -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>=' t1= expr t2= expr ) -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| equals | ^( '&&' t1= expr t2= expr ) -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '||' t1= expr t2= expr ) -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( DOT ( functionCall | structValue ) qualifiedID ) -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)| functionCall | structValue | qualifiedID | INT -> constant(value=$INT.text)| BOOLEAN -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\"))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:290:5: ( ^( '^' t1= expr t2= expr ) -> pow(leftExpr=$t1.strightExpr=$t2.st)| ^( '+' t1= expr t2= expr ) -> add(leftExpr=$t1.strightExpr=$t2.st)| ^( '-' t1= expr t2= expr ) -> sub(leftExpr=$t1.strightExpr=$t2.st)| ^( '%' t1= expr t2= expr ) -> remainder(leftExpr=$t1.strightExpr=$t2.st)| ^( '*' t1= expr t2= expr ) -> mul(leftExpr=$t1.strightExpr=$t2.st)| ^( '/' t1= expr t2= expr ) -> div(leftExpr=$t1.strightExpr=$t2.st)| ^( '!' t= expr ) -> fact(expr=$t.stpackageDst=packageDst)| ^( '~' t= expr ) -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)| ^( PLUS t= expr ) -> unaryPlus(expr=$t.st)| ^( SIGN t= expr ) -> unaryMinus(expr=$t.st)| ^( '<' t1= expr t2= expr ) -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '<=' t1= expr t2= expr ) -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>' t1= expr t2= expr ) -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '>=' t1= expr t2= expr ) -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| equals | ^( '&&' t1= expr t2= expr ) -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( '||' t1= expr t2= expr ) -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())| ^( DOT ( functionCall | structValue ) qualifiedID ) -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)| functionCall | structValue | qualifiedID | INT -> constant(value=$INT.text)| BOOLEAN -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\"))
             int alt13=23;
             switch ( input.LA(1) ) {
             case 38:
@@ -1806,18 +1823,18 @@ public static class STAttrMap extends HashMap {
 
             switch (alt13) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:273:6: ^( '^' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:291:6: ^( '^' t1= expr t2= expr )
                     {
-                    match(input,38,FOLLOW_38_in_expr1448); 
+                    match(input,38,FOLLOW_38_in_expr1458); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1452);
+                    pushFollow(FOLLOW_expr_in_expr1462);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1456);
+                    pushFollow(FOLLOW_expr_in_expr1466);
                     t2=expr();
 
                     state._fsp--;
@@ -1829,7 +1846,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 274:6: -> pow(leftExpr=$t1.strightExpr=$t2.st)
+                    // 292:6: -> pow(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("pow",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -1839,18 +1856,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:276:7: ^( '+' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:294:7: ^( '+' t1= expr t2= expr )
                     {
-                    match(input,27,FOLLOW_27_in_expr1492); 
+                    match(input,27,FOLLOW_27_in_expr1502); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1496);
+                    pushFollow(FOLLOW_expr_in_expr1506);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1500);
+                    pushFollow(FOLLOW_expr_in_expr1510);
                     t2=expr();
 
                     state._fsp--;
@@ -1862,7 +1879,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 277:7: -> add(leftExpr=$t1.strightExpr=$t2.st)
+                    // 295:7: -> add(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("add",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -1872,18 +1889,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:279:7: ^( '-' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:297:7: ^( '-' t1= expr t2= expr )
                     {
-                    match(input,29,FOLLOW_29_in_expr1538); 
+                    match(input,29,FOLLOW_29_in_expr1548); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1542);
+                    pushFollow(FOLLOW_expr_in_expr1552);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1546);
+                    pushFollow(FOLLOW_expr_in_expr1556);
                     t2=expr();
 
                     state._fsp--;
@@ -1895,7 +1912,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 280:6: -> sub(leftExpr=$t1.strightExpr=$t2.st)
+                    // 298:6: -> sub(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("sub",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -1905,18 +1922,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:282:7: ^( '%' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:300:7: ^( '%' t1= expr t2= expr )
                     {
-                    match(input,22,FOLLOW_22_in_expr1582); 
+                    match(input,22,FOLLOW_22_in_expr1592); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1586);
+                    pushFollow(FOLLOW_expr_in_expr1596);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1590);
+                    pushFollow(FOLLOW_expr_in_expr1600);
                     t2=expr();
 
                     state._fsp--;
@@ -1928,7 +1945,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 283:6: -> remainder(leftExpr=$t1.strightExpr=$t2.st)
+                    // 301:6: -> remainder(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("remainder",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -1938,18 +1955,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:285:7: ^( '*' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:303:7: ^( '*' t1= expr t2= expr )
                     {
-                    match(input,26,FOLLOW_26_in_expr1626); 
+                    match(input,26,FOLLOW_26_in_expr1636); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1630);
+                    pushFollow(FOLLOW_expr_in_expr1640);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1634);
+                    pushFollow(FOLLOW_expr_in_expr1644);
                     t2=expr();
 
                     state._fsp--;
@@ -1961,7 +1978,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 286:7: -> mul(leftExpr=$t1.strightExpr=$t2.st)
+                    // 304:7: -> mul(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("mul",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -1971,18 +1988,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:288:7: ^( '/' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:306:7: ^( '/' t1= expr t2= expr )
                     {
-                    match(input,30,FOLLOW_30_in_expr1672); 
+                    match(input,30,FOLLOW_30_in_expr1682); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1676);
+                    pushFollow(FOLLOW_expr_in_expr1686);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1680);
+                    pushFollow(FOLLOW_expr_in_expr1690);
                     t2=expr();
 
                     state._fsp--;
@@ -1994,7 +2011,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 289:7: -> div(leftExpr=$t1.strightExpr=$t2.st)
+                    // 307:7: -> div(leftExpr=$t1.strightExpr=$t2.st)
                     {
                         retval.st = templateLib.getInstanceOf("div",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
                     }
@@ -2004,12 +2021,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 7 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:291:8: ^( '!' t= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:309:8: ^( '!' t= expr )
                     {
-                    match(input,21,FOLLOW_21_in_expr1719); 
+                    match(input,21,FOLLOW_21_in_expr1729); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1723);
+                    pushFollow(FOLLOW_expr_in_expr1733);
                     t=expr();
 
                     state._fsp--;
@@ -2021,7 +2038,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 292:7: -> fact(expr=$t.stpackageDst=packageDst)
+                    // 310:7: -> fact(expr=$t.stpackageDst=packageDst)
                     {
                         retval.st = templateLib.getInstanceOf("fact",new STAttrMap().put("expr", (t!=null?t.st:null)).put("packageDst", packageDst));
                     }
@@ -2031,12 +2048,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:294:7: ^( '~' t= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:312:7: ^( '~' t= expr )
                     {
-                    match(input,49,FOLLOW_49_in_expr1762); 
+                    match(input,49,FOLLOW_49_in_expr1772); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1766);
+                    pushFollow(FOLLOW_expr_in_expr1776);
                     t=expr();
 
                     state._fsp--;
@@ -2048,7 +2065,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 295:6: -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)
+                    // 313:6: -> not(expr=$t.sttokenNum=$start.getIndex()packageDst=packageDst)
                     {
                         retval.st = templateLib.getInstanceOf("not",new STAttrMap().put("expr", (t!=null?t.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()).put("packageDst", packageDst));
                     }
@@ -2058,12 +2075,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 9 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:297:8: ^( PLUS t= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:315:8: ^( PLUS t= expr )
                     {
-                    match(input,PLUS,FOLLOW_PLUS_in_expr1808); 
+                    match(input,PLUS,FOLLOW_PLUS_in_expr1818); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1812);
+                    pushFollow(FOLLOW_expr_in_expr1822);
                     t=expr();
 
                     state._fsp--;
@@ -2075,7 +2092,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 298:8: -> unaryPlus(expr=$t.st)
+                    // 316:8: -> unaryPlus(expr=$t.st)
                     {
                         retval.st = templateLib.getInstanceOf("unaryPlus",new STAttrMap().put("expr", (t!=null?t.st:null)));
                     }
@@ -2085,12 +2102,12 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 10 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:300:8: ^( SIGN t= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:318:8: ^( SIGN t= expr )
                     {
-                    match(input,SIGN,FOLLOW_SIGN_in_expr1849); 
+                    match(input,SIGN,FOLLOW_SIGN_in_expr1859); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1853);
+                    pushFollow(FOLLOW_expr_in_expr1863);
                     t=expr();
 
                     state._fsp--;
@@ -2102,7 +2119,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 301:8: -> unaryMinus(expr=$t.st)
+                    // 319:8: -> unaryMinus(expr=$t.st)
                     {
                         retval.st = templateLib.getInstanceOf("unaryMinus",new STAttrMap().put("expr", (t!=null?t.st:null)));
                     }
@@ -2112,18 +2129,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 11 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:303:7: ^( '<' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:321:7: ^( '<' t1= expr t2= expr )
                     {
-                    match(input,32,FOLLOW_32_in_expr1889); 
+                    match(input,32,FOLLOW_32_in_expr1899); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1893);
+                    pushFollow(FOLLOW_expr_in_expr1903);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1897);
+                    pushFollow(FOLLOW_expr_in_expr1907);
                     t2=expr();
 
                     state._fsp--;
@@ -2135,7 +2152,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 304:6: -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 322:6: -> less(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("less",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2145,18 +2162,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 12 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:306:7: ^( '<=' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:324:7: ^( '<=' t1= expr t2= expr )
                     {
-                    match(input,33,FOLLOW_33_in_expr1937); 
+                    match(input,33,FOLLOW_33_in_expr1947); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1941);
+                    pushFollow(FOLLOW_expr_in_expr1951);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1945);
+                    pushFollow(FOLLOW_expr_in_expr1955);
                     t2=expr();
 
                     state._fsp--;
@@ -2168,7 +2185,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 307:7: -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 325:7: -> lessEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("lessEqual",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2178,18 +2195,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 13 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:309:7: ^( '>' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:327:7: ^( '>' t1= expr t2= expr )
                     {
-                    match(input,36,FOLLOW_36_in_expr1986); 
+                    match(input,36,FOLLOW_36_in_expr1996); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr1990);
+                    pushFollow(FOLLOW_expr_in_expr2000);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr1994);
+                    pushFollow(FOLLOW_expr_in_expr2004);
                     t2=expr();
 
                     state._fsp--;
@@ -2201,7 +2218,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 310:7: -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 328:7: -> greater(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("greater",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2211,18 +2228,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 14 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:312:7: ^( '>=' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:330:7: ^( '>=' t1= expr t2= expr )
                     {
-                    match(input,37,FOLLOW_37_in_expr2035); 
+                    match(input,37,FOLLOW_37_in_expr2045); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr2039);
+                    pushFollow(FOLLOW_expr_in_expr2049);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr2043);
+                    pushFollow(FOLLOW_expr_in_expr2053);
                     t2=expr();
 
                     state._fsp--;
@@ -2234,7 +2251,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 313:7: -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 331:7: -> greaterEqual(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("greaterEqual",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2244,31 +2261,31 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 15 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:315:7: equals
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:333:7: equals
                     {
-                    pushFollow(FOLLOW_equals_in_expr2083);
-                    equals21=equals();
+                    pushFollow(FOLLOW_equals_in_expr2093);
+                    equals22=equals();
 
                     state._fsp--;
 
 
-                    retval.st = (equals21!=null?equals21.st:null); retval.stackSize = (equals21!=null?equals21.stackSize:0);
+                    retval.st = (equals22!=null?equals22.st:null); retval.stackSize = (equals22!=null?equals22.stackSize:0);
 
                     }
                     break;
                 case 16 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:317:7: ^( '&&' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:335:7: ^( '&&' t1= expr t2= expr )
                     {
-                    match(input,23,FOLLOW_23_in_expr2099); 
+                    match(input,23,FOLLOW_23_in_expr2109); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr2103);
+                    pushFollow(FOLLOW_expr_in_expr2113);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr2107);
+                    pushFollow(FOLLOW_expr_in_expr2117);
                     t2=expr();
 
                     state._fsp--;
@@ -2280,7 +2297,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 318:6: -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 336:6: -> and(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("and",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2290,18 +2307,18 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 17 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:320:7: ^( '||' t1= expr t2= expr )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:338:7: ^( '||' t1= expr t2= expr )
                     {
-                    match(input,47,FOLLOW_47_in_expr2147); 
+                    match(input,47,FOLLOW_47_in_expr2157); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_expr_in_expr2151);
+                    pushFollow(FOLLOW_expr_in_expr2161);
                     t1=expr();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_expr_in_expr2155);
+                    pushFollow(FOLLOW_expr_in_expr2165);
                     t2=expr();
 
                     state._fsp--;
@@ -2313,7 +2330,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 321:6: -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+                    // 339:6: -> or(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
                     {
                         retval.st = templateLib.getInstanceOf("or",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
                     }
@@ -2323,14 +2340,14 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 18 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:323:7: ^( DOT ( functionCall | structValue ) qualifiedID )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:341:7: ^( DOT ( functionCall | structValue ) qualifiedID )
                     {
-                    match(input,DOT,FOLLOW_DOT_in_expr2195); 
+                    match(input,DOT,FOLLOW_DOT_in_expr2205); 
 
                     Type type = null;
 
                     match(input, Token.DOWN, null); 
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:324:7: ( functionCall | structValue )
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:342:7: ( functionCall | structValue )
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -2349,28 +2366,28 @@ public static class STAttrMap extends HashMap {
                     }
                     switch (alt12) {
                         case 1 :
-                            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:324:8: functionCall
+                            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:342:8: functionCall
                             {
-                            pushFollow(FOLLOW_functionCall_in_expr2206);
-                            functionCall22=functionCall();
+                            pushFollow(FOLLOW_functionCall_in_expr2216);
+                            functionCall23=functionCall();
 
                             state._fsp--;
 
 
-                            type = (functionCall22!=null?((TypeTree)functionCall22.start):null).getStaticType(); retval.stackSize = (functionCall22!=null?functionCall22.stackSize:0);
+                            type = (functionCall23!=null?((TypeTree)functionCall23.start):null).getStaticType(); retval.stackSize = (functionCall23!=null?functionCall23.stackSize:0);
 
                             }
                             break;
                         case 2 :
-                            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:325:9: structValue
+                            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:343:9: structValue
                             {
-                            pushFollow(FOLLOW_structValue_in_expr2218);
-                            structValue23=structValue();
+                            pushFollow(FOLLOW_structValue_in_expr2228);
+                            structValue24=structValue();
 
                             state._fsp--;
 
 
-                            type = (structValue23!=null?((TypeTree)structValue23.start):null).getStaticType(); retval.stackSize = (functionCall22!=null?functionCall22.stackSize:0);
+                            type = (structValue24!=null?((TypeTree)structValue24.start):null).getStaticType(); retval.stackSize = (functionCall23!=null?functionCall23.stackSize:0);
 
                             }
                             break;
@@ -2378,8 +2395,8 @@ public static class STAttrMap extends HashMap {
                     }
 
 
-                    pushFollow(FOLLOW_qualifiedID_in_expr2230);
-                    qualifiedID24=qualifiedID();
+                    pushFollow(FOLLOW_qualifiedID_in_expr2240);
+                    qualifiedID25=qualifiedID();
 
                     state._fsp--;
 
@@ -2390,9 +2407,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 327:7: -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)
+                    // 345:7: -> oneTimeAccess(function=$functionCall.ststructValue=$structValue.sttype=typeqid=$qualifiedID.st)
                     {
-                        retval.st = templateLib.getInstanceOf("oneTimeAccess",new STAttrMap().put("function", (functionCall22!=null?functionCall22.st:null)).put("structValue", (structValue23!=null?structValue23.st:null)).put("type", type).put("qid", (qualifiedID24!=null?qualifiedID24.st:null)));
+                        retval.st = templateLib.getInstanceOf("oneTimeAccess",new STAttrMap().put("function", (functionCall23!=null?functionCall23.st:null)).put("structValue", (structValue24!=null?structValue24.st:null)).put("type", type).put("qid", (qualifiedID25!=null?qualifiedID25.st:null)));
                     }
 
 
@@ -2400,55 +2417,55 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 19 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:330:7: functionCall
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:348:7: functionCall
                     {
-                    pushFollow(FOLLOW_functionCall_in_expr2304);
-                    functionCall25=functionCall();
+                    pushFollow(FOLLOW_functionCall_in_expr2314);
+                    functionCall26=functionCall();
 
                     state._fsp--;
 
 
-                    retval.st = (functionCall25!=null?functionCall25.st:null); retval.stackSize = (functionCall25!=null?functionCall25.stackSize:0);
+                    retval.st = (functionCall26!=null?functionCall26.st:null); retval.stackSize = (functionCall26!=null?functionCall26.stackSize:0);
 
                     }
                     break;
                 case 20 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:332:7: structValue
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:350:7: structValue
                     {
-                    pushFollow(FOLLOW_structValue_in_expr2319);
-                    structValue26=structValue();
+                    pushFollow(FOLLOW_structValue_in_expr2329);
+                    structValue27=structValue();
 
                     state._fsp--;
 
 
-                    retval.st = (structValue26!=null?structValue26.st:null); retval.stackSize = (structValue26!=null?structValue26.stackSize:0);
+                    retval.st = (structValue27!=null?structValue27.st:null); retval.stackSize = (structValue27!=null?structValue27.stackSize:0);
 
                     }
                     break;
                 case 21 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:334:7: qualifiedID
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:352:7: qualifiedID
                     {
-                    pushFollow(FOLLOW_qualifiedID_in_expr2334);
-                    qualifiedID27=qualifiedID();
+                    pushFollow(FOLLOW_qualifiedID_in_expr2344);
+                    qualifiedID28=qualifiedID();
 
                     state._fsp--;
 
 
-                    retval.st = (qualifiedID27!=null?qualifiedID27.st:null); retval.stackSize = 1;
+                    retval.st = (qualifiedID28!=null?qualifiedID28.st:null); retval.stackSize = 1;
 
                     }
                     break;
                 case 22 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:336:8: INT
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:354:8: INT
                     {
-                    INT28=(TypeTree)match(input,INT,FOLLOW_INT_in_expr2350); 
+                    INT29=(TypeTree)match(input,INT,FOLLOW_INT_in_expr2360); 
 
                     retval.stackSize = 1;
 
                     // TEMPLATE REWRITE
-                    // 337:7: -> constant(value=$INT.text)
+                    // 355:7: -> constant(value=$INT.text)
                     {
-                        retval.st = templateLib.getInstanceOf("constant",new STAttrMap().put("value", (INT28!=null?INT28.getText():null)));
+                        retval.st = templateLib.getInstanceOf("constant",new STAttrMap().put("value", (INT29!=null?INT29.getText():null)));
                     }
 
 
@@ -2456,16 +2473,16 @@ public static class STAttrMap extends HashMap {
                     }
                     break;
                 case 23 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:338:7: BOOLEAN
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:356:7: BOOLEAN
                     {
-                    BOOLEAN29=(TypeTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_expr2375); 
+                    BOOLEAN30=(TypeTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_expr2385); 
 
                     retval.stackSize = 1;
 
                     // TEMPLATE REWRITE
-                    // 339:6: -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\")
+                    // 357:6: -> constant(value=$BOOLEAN.text.equals(\"true\") ? \"1\" : \"0\")
                     {
-                        retval.st = templateLib.getInstanceOf("constant",new STAttrMap().put("value", (BOOLEAN29!=null?BOOLEAN29.getText():null).equals("true") ? "1" : "0"));
+                        retval.st = templateLib.getInstanceOf("constant",new STAttrMap().put("value", (BOOLEAN30!=null?BOOLEAN30.getText():null).equals("true") ? "1" : "0"));
                     }
 
 
@@ -2497,7 +2514,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "equals"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:342:1: equals returns [int stackSize] : ^( '==' t1= expr t2= expr ) -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st) -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex());
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:360:1: equals returns [int stackSize] : ^( '==' t1= expr t2= expr ) -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st) -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex());
     public final JPoclGenerator.equals_return equals() throws RecognitionException {
         JPoclGenerator.equals_return retval = new JPoclGenerator.equals_return();
         retval.start = input.LT(1);
@@ -2509,19 +2526,19 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:342:31: ( ^( '==' t1= expr t2= expr ) -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st) -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex()))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:343:5: ^( '==' t1= expr t2= expr )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:360:31: ( ^( '==' t1= expr t2= expr ) -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st) -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex()))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:361:5: ^( '==' t1= expr t2= expr )
             {
-            match(input,35,FOLLOW_35_in_equals2424); 
+            match(input,35,FOLLOW_35_in_equals2434); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_expr_in_equals2428);
+            pushFollow(FOLLOW_expr_in_equals2438);
             t1=expr();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_expr_in_equals2432);
+            pushFollow(FOLLOW_expr_in_equals2442);
             t2=expr();
 
             state._fsp--;
@@ -2535,12 +2552,12 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 348:5: -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st)
+            // 366:5: -> {areStructs}? equalsStruct(leftExpr=$t1.strightExpr=$t2.st)
             if (areStructs) {
                 retval.st = templateLib.getInstanceOf("equalsStruct",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)));
             }
 
-            else // 350:5: -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
+            else // 368:5: -> equals(leftExpr=$t1.strightExpr=$t2.sttokenNum=$start.getIndex())
             {
                 retval.st = templateLib.getInstanceOf("equals",new STAttrMap().put("leftExpr", (t1!=null?t1.st:null)).put("rightExpr", (t2!=null?t2.st:null)).put("tokenNum", ((TypeTree)retval.start).getIndex()));
             }
@@ -2572,25 +2589,25 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "functionCall"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:353:1: functionCall returns [int stackSize] : ^( FUNCCALL ID (e+= expr )* ) -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e) -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:371:1: functionCall returns [int stackSize] : ^( FUNCCALL ID (e+= expr )* ) -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e) -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e);
     public final JPoclGenerator.functionCall_return functionCall() throws RecognitionException {
         JPoclGenerator.functionCall_return retval = new JPoclGenerator.functionCall_return();
         retval.start = input.LT(1);
 
 
-        TypeTree ID30=null;
+        TypeTree ID31=null;
         List list_e=null;
         RuleReturnScope e = null;
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:354:7: ( ^( FUNCCALL ID (e+= expr )* ) -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e) -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:355:7: ^( FUNCCALL ID (e+= expr )* )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:372:7: ( ^( FUNCCALL ID (e+= expr )* ) -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e) -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:373:7: ^( FUNCCALL ID (e+= expr )* )
             {
-            match(input,FUNCCALL,FOLLOW_FUNCCALL_in_functionCall2534); 
+            match(input,FUNCCALL,FOLLOW_FUNCCALL_in_functionCall2544); 
 
             match(input, Token.DOWN, null); 
-            ID30=(TypeTree)match(input,ID,FOLLOW_ID_in_functionCall2536); 
+            ID31=(TypeTree)match(input,ID,FOLLOW_ID_in_functionCall2546); 
 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:355:22: (e+= expr )*
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:373:22: (e+= expr )*
             loop14:
             do {
                 int alt14=2;
@@ -2603,9 +2620,9 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt14) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:355:23: e+= expr
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:373:23: e+= expr
             	    {
-            	    pushFollow(FOLLOW_expr_in_functionCall2542);
+            	    pushFollow(FOLLOW_expr_in_functionCall2552);
             	    e=expr();
 
             	    state._fsp--;
@@ -2626,7 +2643,7 @@ public static class STAttrMap extends HashMap {
 
 
 
-            							FunctionType functionType = api.get((ID30!=null?ID30.getText():null));
+            							FunctionType functionType = api.get((ID31!=null?ID31.getText():null));
             							Type returnType = functionType.getReturnType();
             							if(!returnType.equalsTo(PrimType.VOID)){
             								retval.stackSize += 1;
@@ -2638,14 +2655,14 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 363:7: -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e)
+            // 381:7: -> {hasReturnValueConsumed($start) || returnType.equalsTo(PrimType.VOID)}? functionCall(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e)
             if (hasReturnValueConsumed(((TypeTree)retval.start)) || returnType.equalsTo(PrimType.VOID)) {
-                retval.st = templateLib.getInstanceOf("functionCall",new STAttrMap().put("package", packageDst).put("fid", (ID30!=null?ID30.getText():null)).put("returnType", returnTypeRappresentation).put("signature", functionType.getParametersSignature(packageDst)).put("expr", list_e));
+                retval.st = templateLib.getInstanceOf("functionCall",new STAttrMap().put("package", packageDst).put("fid", (ID31!=null?ID31.getText():null)).put("returnType", returnTypeRappresentation).put("signature", functionType.getParametersSignature(packageDst)).put("expr", list_e));
             }
 
-            else // 367:7: -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e)
+            else // 385:7: -> functionCallAndPop(package=packageDstfid=$ID.textreturnType=returnTypeRappresentationsignature=functionType.getParametersSignature(packageDst)expr=$e)
             {
-                retval.st = templateLib.getInstanceOf("functionCallAndPop",new STAttrMap().put("package", packageDst).put("fid", (ID30!=null?ID30.getText():null)).put("returnType", returnTypeRappresentation).put("signature", functionType.getParametersSignature(packageDst)).put("expr", list_e));
+                retval.st = templateLib.getInstanceOf("functionCallAndPop",new STAttrMap().put("package", packageDst).put("fid", (ID31!=null?ID31.getText():null)).put("returnType", returnTypeRappresentation).put("signature", functionType.getParametersSignature(packageDst)).put("expr", list_e));
             }
 
 
@@ -2675,25 +2692,25 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "structValue"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:372:1: structValue returns [int stackSize] : ^( 'struct' ID (e+= expr )+ ) -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e);
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:390:1: structValue returns [int stackSize] : ^( 'struct' ID (e+= expr )+ ) -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e);
     public final JPoclGenerator.structValue_return structValue() throws RecognitionException {
         JPoclGenerator.structValue_return retval = new JPoclGenerator.structValue_return();
         retval.start = input.LT(1);
 
 
-        TypeTree ID31=null;
+        TypeTree ID32=null;
         List list_e=null;
         RuleReturnScope e = null;
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:376:7: ( ^( 'struct' ID (e+= expr )+ ) -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:377:8: ^( 'struct' ID (e+= expr )+ )
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:394:7: ( ^( 'struct' ID (e+= expr )+ ) -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:395:8: ^( 'struct' ID (e+= expr )+ )
             {
-            match(input,43,FOLLOW_43_in_structValue2725); 
+            match(input,43,FOLLOW_43_in_structValue2735); 
 
             match(input, Token.DOWN, null); 
-            ID31=(TypeTree)match(input,ID,FOLLOW_ID_in_structValue2727); 
+            ID32=(TypeTree)match(input,ID,FOLLOW_ID_in_structValue2737); 
 
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:377:22: (e+= expr )+
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:395:22: (e+= expr )+
             int cnt15=0;
             loop15:
             do {
@@ -2707,9 +2724,9 @@ public static class STAttrMap extends HashMap {
 
                 switch (alt15) {
             	case 1 :
-            	    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:377:23: e+= expr
+            	    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:395:23: e+= expr
             	    {
-            	    pushFollow(FOLLOW_expr_in_structValue2732);
+            	    pushFollow(FOLLOW_expr_in_structValue2742);
             	    e=expr();
 
             	    state._fsp--;
@@ -2737,9 +2754,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 378:8: -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e)
+            // 396:8: -> structValue(id=$ID.textpackageDst=packageDstconstructorSignature=dataTypes.get($ID.text).getFieldsSignature(packageDst)expr=$e)
             {
-                retval.st = templateLib.getInstanceOf("structValue",new STAttrMap().put("id", (ID31!=null?ID31.getText():null)).put("packageDst", packageDst).put("constructorSignature", dataTypes.get((ID31!=null?ID31.getText():null)).getFieldsSignature(packageDst)).put("expr", list_e));
+                retval.st = templateLib.getInstanceOf("structValue",new STAttrMap().put("id", (ID32!=null?ID32.getText():null)).put("packageDst", packageDst).put("constructorSignature", dataTypes.get((ID32!=null?ID32.getText():null)).getFieldsSignature(packageDst)).put("expr", list_e));
             }
 
 
@@ -2771,7 +2788,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "qualifiedID"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:382:1: qualifiedID : ( id | ^( DOT id qid= qualifiedID ) -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text)) -> qualifiedID(id=$id.stqualifiedID=$qid.st));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:400:1: qualifiedID : ( id | ^( DOT id qid= qualifiedID ) -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text)) -> qualifiedID(id=$id.stqualifiedID=$qid.st));
     public final JPoclGenerator.qualifiedID_return qualifiedID() throws RecognitionException {
         JPoclGenerator.qualifiedID_return retval = new JPoclGenerator.qualifiedID_return();
         retval.start = input.LT(1);
@@ -2779,13 +2796,13 @@ public static class STAttrMap extends HashMap {
 
         JPoclGenerator.qualifiedID_return qid =null;
 
-        JPoclGenerator.id_return id32 =null;
-
         JPoclGenerator.id_return id33 =null;
+
+        JPoclGenerator.id_return id34 =null;
 
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:382:13: ( id | ^( DOT id qid= qualifiedID ) -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text)) -> qualifiedID(id=$id.stqualifiedID=$qid.st))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:400:13: ( id | ^( DOT id qid= qualifiedID ) -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text)) -> qualifiedID(id=$id.stqualifiedID=$qid.st))
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -2804,31 +2821,31 @@ public static class STAttrMap extends HashMap {
             }
             switch (alt16) {
                 case 1 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:383:7: id
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:401:7: id
                     {
-                    pushFollow(FOLLOW_id_in_qualifiedID2802);
-                    id32=id();
-
-                    state._fsp--;
-
-
-                    retval.st = (id32!=null?id32.st:null);
-
-                    }
-                    break;
-                case 2 :
-                    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:384:9: ^( DOT id qid= qualifiedID )
-                    {
-                    match(input,DOT,FOLLOW_DOT_in_qualifiedID2815); 
-
-                    match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_id_in_qualifiedID2817);
+                    pushFollow(FOLLOW_id_in_qualifiedID2812);
                     id33=id();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_qualifiedID_in_qualifiedID2821);
+                    retval.st = (id33!=null?id33.st:null);
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:402:9: ^( DOT id qid= qualifiedID )
+                    {
+                    match(input,DOT,FOLLOW_DOT_in_qualifiedID2825); 
+
+                    match(input, Token.DOWN, null); 
+                    pushFollow(FOLLOW_id_in_qualifiedID2827);
+                    id34=id();
+
+                    state._fsp--;
+
+
+                    pushFollow(FOLLOW_qualifiedID_in_qualifiedID2831);
                     qid=qualifiedID();
 
                     state._fsp--;
@@ -2838,14 +2855,14 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 385:8: -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text))
+                    // 403:8: -> {$start.parent.token.getType() != DOT}? qualifiedIDAndLoad(qualifiedID=$qid.stlocalNum=getVariableLocalNumber($id.text))
                     if (((TypeTree)retval.start).parent.token.getType() != DOT) {
-                        retval.st = templateLib.getInstanceOf("qualifiedIDAndLoad",new STAttrMap().put("qualifiedID", (qid!=null?qid.st:null)).put("localNum", getVariableLocalNumber((id33!=null?id33.text:null))));
+                        retval.st = templateLib.getInstanceOf("qualifiedIDAndLoad",new STAttrMap().put("qualifiedID", (qid!=null?qid.st:null)).put("localNum", getVariableLocalNumber((id34!=null?id34.text:null))));
                     }
 
-                    else // 387:8: -> qualifiedID(id=$id.stqualifiedID=$qid.st)
+                    else // 405:8: -> qualifiedID(id=$id.stqualifiedID=$qid.st)
                     {
-                        retval.st = templateLib.getInstanceOf("qualifiedID",new STAttrMap().put("id", (id33!=null?id33.st:null)).put("qualifiedID", (qid!=null?qid.st:null)));
+                        retval.st = templateLib.getInstanceOf("qualifiedID",new STAttrMap().put("id", (id34!=null?id34.st:null)).put("qualifiedID", (qid!=null?qid.st:null)));
                     }
 
 
@@ -2877,25 +2894,25 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "id"
-    // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:390:1: id returns [String text] : ID -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text)) -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text)) -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)) -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst));
+    // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:408:1: id returns [String text] : ID -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text)) -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text)) -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)) -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst));
     public final JPoclGenerator.id_return id() throws RecognitionException {
         JPoclGenerator.id_return retval = new JPoclGenerator.id_return();
         retval.start = input.LT(1);
 
 
-        TypeTree ID34=null;
+        TypeTree ID35=null;
 
         try {
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:390:26: ( ID -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text)) -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text)) -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)) -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)))
-            // C:\\Users\\pc\\Desktop\\IPL\\ew\\JPocl\\JPoclGenerator.g:390:28: ID
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:408:26: ( ID -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text)) -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text)) -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)) -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst)))
+            // C:\\Users\\pc\\Documents\\GitHub\\JPocl\\JPoclGenerator.g:408:28: ID
             {
-            ID34=(TypeTree)match(input,ID,FOLLOW_ID_in_id2900); 
+            ID35=(TypeTree)match(input,ID,FOLLOW_ID_in_id2910); 
 
-            retval.text = (ID34!=null?ID34.getText():null);
+            retval.text = (ID35!=null?ID35.getText():null);
 
 
             							if(((TypeTree)retval.start).parent.token.getType() != DOT && !isDeclared(retval.text)){
-            								addVariableToLocals((ID34!=null?ID34.getText():null));
+            								addVariableToLocals((ID35!=null?ID35.getText():null));
             							}
             							boolean isRootDOT = ((TypeTree)retval.start).parent.token.getType() == DOT,
             											isLeftValue = isLeftValue(((TypeTree)retval.start));
@@ -2909,24 +2926,24 @@ public static class STAttrMap extends HashMap {
             						
 
             // TEMPLATE REWRITE
-            // 403:9: -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text))
+            // 421:9: -> {!isRootDOT && isLeftValue}? store(store=type.getStorer()localNum=getVariableLocalNumber($ID.text))
             if (!isRootDOT && isLeftValue) {
-                retval.st = templateLib.getInstanceOf("store",new STAttrMap().put("store", type.getStorer()).put("localNum", getVariableLocalNumber((ID34!=null?ID34.getText():null))));
+                retval.st = templateLib.getInstanceOf("store",new STAttrMap().put("store", type.getStorer()).put("localNum", getVariableLocalNumber((ID35!=null?ID35.getText():null))));
             }
 
-            else // 405:8: -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text))
+            else // 423:8: -> {!isRootDOT}? load(load=type.getLoader()localNum=getVariableLocalNumber($ID.text))
             if (!isRootDOT) {
-                retval.st = templateLib.getInstanceOf("load",new STAttrMap().put("load", type.getLoader()).put("localNum", getVariableLocalNumber((ID34!=null?ID34.getText():null))));
+                retval.st = templateLib.getInstanceOf("load",new STAttrMap().put("load", type.getLoader()).put("localNum", getVariableLocalNumber((ID35!=null?ID35.getText():null))));
             }
 
-            else // 407:8: -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst))
+            else // 425:8: -> {isLeftValue}? putField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst))
             if (isLeftValue) {
-                retval.st = templateLib.getInstanceOf("putField",new STAttrMap().put("field", (ID34!=null?ID34.getText():null)).put("struct", siblingType).put("type", type.getObjectType(packageDst)));
+                retval.st = templateLib.getInstanceOf("putField",new STAttrMap().put("field", (ID35!=null?ID35.getText():null)).put("struct", siblingType).put("type", type.getObjectType(packageDst)));
             }
 
-            else // 409:8: -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst))
+            else // 427:8: -> getField(field=$ID.textstruct=siblingTypetype=type.getObjectType(packageDst))
             {
-                retval.st = templateLib.getInstanceOf("getField",new STAttrMap().put("field", (ID34!=null?ID34.getText():null)).put("struct", siblingType).put("type", type.getObjectType(packageDst)));
+                retval.st = templateLib.getInstanceOf("getField",new STAttrMap().put("field", (ID35!=null?ID35.getText():null)).put("struct", siblingType).put("type", type.getObjectType(packageDst)));
             }
 
 
@@ -2953,123 +2970,123 @@ public static class STAttrMap extends HashMap {
 
     public static final BitSet FOLLOW_CALC_in_calc96 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_stat_in_calc99 = new BitSet(new long[]{0x00002D0000000E38L});
-    public static final BitSet FOLLOW_echo_in_stat184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ASSIGN_in_stat197 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_stat199 = new BitSet(new long[]{0x0000000000001100L});
-    public static final BitSet FOLLOW_qualifiedID_in_stat201 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_functionCall_in_stat266 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_stat282 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_stat284 = new BitSet(new long[]{0x00002D0000000E30L});
-    public static final BitSet FOLLOW_stat_in_stat288 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_45_in_stat335 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_stat337 = new BitSet(new long[]{0x00002D0000000E30L});
-    public static final BitSet FOLLOW_stat_in_stat341 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_block_in_stat386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_structDecl_in_stat396 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_functionDecl_in_stat406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_returnStat_in_stat416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ECHO_in_echo436 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_echo440 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_BLOCK_in_block517 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stat_in_block521 = new BitSet(new long[]{0x00002D0000000E38L});
-    public static final BitSet FOLLOW_FUNCDECL_in_functionDecl591 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_returnFunctionDecl_in_functionDecl593 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_ID_in_functionDecl595 = new BitSet(new long[]{0x00002D0000008E38L});
-    public static final BitSet FOLLOW_parametersDecl_in_functionDecl597 = new BitSet(new long[]{0x00002D0000000E38L});
-    public static final BitSet FOLLOW_stat_in_functionDecl602 = new BitSet(new long[]{0x00002D0000000E38L});
-    public static final BitSet FOLLOW_41_in_returnFunctionDecl790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_returnFunctionDecl813 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_returnFunctionDecl836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_returnFunctionDecl859 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_returnStat892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_returnStat911 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_returnStat913 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PDECS_in_parametersDecl995 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_parameterDecl_in_parametersDecl999 = new BitSet(new long[]{0x00000A8000000008L});
-    public static final BitSet FOLLOW_41_in_parameterDecl1065 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_parameterDecl1067 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_39_in_parameterDecl1090 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_parameterDecl1092 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_43_in_parameterDecl1115 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_parameterDecl1119 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_ID_in_parameterDecl1123 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_43_in_structDecl1186 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_structDecl1188 = new BitSet(new long[]{0x00000A8000000000L});
-    public static final BitSet FOLLOW_structMember_in_structDecl1192 = new BitSet(new long[]{0x00000A8000000008L});
-    public static final BitSet FOLLOW_41_in_structMember1304 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_structMember1306 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_39_in_structMember1337 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_structMember1341 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_43_in_structMember1372 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_structMember1376 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_ID_in_structMember1380 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_38_in_expr1448 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1452 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1456 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_27_in_expr1492 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1496 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1500 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_29_in_expr1538 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1542 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1546 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_22_in_expr1582 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1586 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1590 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_26_in_expr1626 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1630 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1634 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_30_in_expr1672 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1676 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1680 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_21_in_expr1719 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1723 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_49_in_expr1762 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1766 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PLUS_in_expr1808 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1812 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SIGN_in_expr1849 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1853 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_32_in_expr1889 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1893 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1897 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_33_in_expr1937 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1941 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1945 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_36_in_expr1986 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr1990 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr1994 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_37_in_expr2035 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr2039 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr2043 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_equals_in_expr2083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_expr2099 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr2103 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr2107 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_47_in_expr2147 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr2151 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_expr2155 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DOT_in_expr2195 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_functionCall_in_expr2206 = new BitSet(new long[]{0x0000000000001100L});
-    public static final BitSet FOLLOW_structValue_in_expr2218 = new BitSet(new long[]{0x0000000000001100L});
-    public static final BitSet FOLLOW_qualifiedID_in_expr2230 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_functionCall_in_expr2304 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_structValue_in_expr2319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_qualifiedID_in_expr2334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_expr2350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_in_expr2375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_equals2424 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_equals2428 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_equals2432 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_FUNCCALL_in_functionCall2534 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_functionCall2536 = new BitSet(new long[]{0x0002887B6CE33548L});
-    public static final BitSet FOLLOW_expr_in_functionCall2542 = new BitSet(new long[]{0x0002887B6CE33548L});
-    public static final BitSet FOLLOW_43_in_structValue2725 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_structValue2727 = new BitSet(new long[]{0x0002887B6CE33540L});
-    public static final BitSet FOLLOW_expr_in_structValue2732 = new BitSet(new long[]{0x0002887B6CE33548L});
-    public static final BitSet FOLLOW_id_in_qualifiedID2802 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOT_in_qualifiedID2815 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_id_in_qualifiedID2817 = new BitSet(new long[]{0x0000000000001100L});
-    public static final BitSet FOLLOW_qualifiedID_in_qualifiedID2821 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ID_in_id2900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_echo_in_stat198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_stat211 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_stat213 = new BitSet(new long[]{0x0000000000001100L});
+    public static final BitSet FOLLOW_qualifiedID_in_stat215 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_functionCall_in_stat280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_stat296 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_stat298 = new BitSet(new long[]{0x00002D0000000E30L});
+    public static final BitSet FOLLOW_stat_in_stat302 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_45_in_stat349 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_stat351 = new BitSet(new long[]{0x00002D0000000E30L});
+    public static final BitSet FOLLOW_stat_in_stat355 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_block_in_stat400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_structDecl_in_stat410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_functionDecl_in_stat420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_returnStat_in_stat430 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ECHO_in_echo450 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_echo454 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_BLOCK_in_block533 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stat_in_block538 = new BitSet(new long[]{0x00002D0000000E38L});
+    public static final BitSet FOLLOW_FUNCDECL_in_functionDecl600 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_returnFunctionDecl_in_functionDecl602 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ID_in_functionDecl604 = new BitSet(new long[]{0x00002D0000008E38L});
+    public static final BitSet FOLLOW_parametersDecl_in_functionDecl606 = new BitSet(new long[]{0x00002D0000000E38L});
+    public static final BitSet FOLLOW_stat_in_functionDecl610 = new BitSet(new long[]{0x00002D0000000E38L});
+    public static final BitSet FOLLOW_41_in_returnFunctionDecl800 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_returnFunctionDecl823 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_returnFunctionDecl846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_returnFunctionDecl869 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_returnStat902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_returnStat921 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_returnStat923 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_PDECS_in_parametersDecl1005 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_parameterDecl_in_parametersDecl1009 = new BitSet(new long[]{0x00000A8000000008L});
+    public static final BitSet FOLLOW_41_in_parameterDecl1075 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_parameterDecl1077 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_39_in_parameterDecl1100 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_parameterDecl1102 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_43_in_parameterDecl1125 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_parameterDecl1129 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ID_in_parameterDecl1133 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_43_in_structDecl1196 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_structDecl1198 = new BitSet(new long[]{0x00000A8000000000L});
+    public static final BitSet FOLLOW_structMember_in_structDecl1202 = new BitSet(new long[]{0x00000A8000000008L});
+    public static final BitSet FOLLOW_41_in_structMember1314 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_structMember1316 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_39_in_structMember1347 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_structMember1351 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_43_in_structMember1382 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_structMember1386 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ID_in_structMember1390 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_38_in_expr1458 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1462 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1466 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_27_in_expr1502 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1506 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1510 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_29_in_expr1548 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1552 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1556 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_22_in_expr1592 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1596 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1600 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_26_in_expr1636 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1640 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1644 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_30_in_expr1682 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1686 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1690 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_21_in_expr1729 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1733 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_49_in_expr1772 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1776 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_PLUS_in_expr1818 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1822 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SIGN_in_expr1859 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1863 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_32_in_expr1899 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1903 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1907 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_33_in_expr1947 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr1951 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr1955 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_36_in_expr1996 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr2000 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr2004 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_37_in_expr2045 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr2049 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr2053 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_equals_in_expr2093 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_expr2109 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr2113 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr2117 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_47_in_expr2157 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr2161 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_expr2165 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DOT_in_expr2205 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_functionCall_in_expr2216 = new BitSet(new long[]{0x0000000000001100L});
+    public static final BitSet FOLLOW_structValue_in_expr2228 = new BitSet(new long[]{0x0000000000001100L});
+    public static final BitSet FOLLOW_qualifiedID_in_expr2240 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_functionCall_in_expr2314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_structValue_in_expr2329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_qualifiedID_in_expr2344 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_expr2360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_in_expr2385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_equals2434 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_equals2438 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_equals2442 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_FUNCCALL_in_functionCall2544 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_functionCall2546 = new BitSet(new long[]{0x0002887B6CE33548L});
+    public static final BitSet FOLLOW_expr_in_functionCall2552 = new BitSet(new long[]{0x0002887B6CE33548L});
+    public static final BitSet FOLLOW_43_in_structValue2735 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_structValue2737 = new BitSet(new long[]{0x0002887B6CE33540L});
+    public static final BitSet FOLLOW_expr_in_structValue2742 = new BitSet(new long[]{0x0002887B6CE33548L});
+    public static final BitSet FOLLOW_id_in_qualifiedID2812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOT_in_qualifiedID2825 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_id_in_qualifiedID2827 = new BitSet(new long[]{0x0000000000001100L});
+    public static final BitSet FOLLOW_qualifiedID_in_qualifiedID2831 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ID_in_id2910 = new BitSet(new long[]{0x0000000000000002L});
 
 }
