@@ -41,7 +41,7 @@ Data un'istanza di tipo strutturato, è possibile accedere ai campi utilizzando 
 
 	b = struct data{12,07,2013}.giorno
 	c = struct progetto{10, true, struct data{1,7,2013}}
-	c.inizio = b
+	c.inizio.giorno = b
 
 ###Funzioni
 JPocl è fornito di una piccola libreria, composta dalle funzioni:
@@ -55,7 +55,7 @@ grammatica di JPocl, evita che l'utente ridefinisca le funzioni elencate.
 Oltre alle funzioni predefinite, l'utente può dichiararne di nuove. Le funzioni posso appartenere sia allo scope top-level, sia a scope interni; non è però possibile definire funzioni all'interno del corpo di altre.
 
 	struct data initData(int giorno, int mese, int anno){
-		d = struct data(giorno, mese, anno)
+		d = struct data{giorno, mese, anno}
 		return d
 	}
 	echo initData(12,07,2013).mese -> 7
